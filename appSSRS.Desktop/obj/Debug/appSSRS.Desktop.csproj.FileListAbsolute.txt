@@ -1,0 +1,51 @@
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.exe.config
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.exe
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.pdb
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csprojResolveAssemblyReference.cache
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.Properties.Resources.resources
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csproj.GenerateResource.Cache
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csproj.CoreCompileInputs.cache
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.exe
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.pdb
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\bin\Debug\appSSRS.Reports.dll
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\bin\Debug\appSSRS.Reports.pdb
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.frmMain.resources
+C:\Users\SSRS\source\repos\appSSRS.Desktop\appSSRS.Desktop\bin\Debug\appSSRS.Reports.xml
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.exe.config
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.exe
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.pdb
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Reports.dll
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Reports.pdb
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Reports.xml
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csprojResolveAssemblyReference.cache
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.frmMain.resources
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.Properties.Resources.resources
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csproj.GenerateResource.Cache
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.exe
+C:\Projects\NorthStar\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.pdb
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.exe.config
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.exe
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.pdb
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Reports.dll
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Reports.pdb
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Reports.xml
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csprojResolveAssemblyReference.cache
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.frmMain.resources
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.Properties.Resources.resources
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csproj.GenerateResource.Cache
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csproj.CoreCompileInputs.cache
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.exe
+C:\Users\SSRS\source\repos\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.pdb
+E:\_VS project\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.exe.config
+E:\_VS project\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.exe
+E:\_VS project\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Desktop.pdb
+E:\_VS project\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Reports.dll
+E:\_VS project\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Reports.pdb
+E:\_VS project\ReportViewer\appSSRS.Desktop\bin\Debug\appSSRS.Reports.xml
+E:\_VS project\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csprojResolveAssemblyReference.cache
+E:\_VS project\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.frmMain.resources
+E:\_VS project\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.Properties.Resources.resources
+E:\_VS project\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csproj.GenerateResource.Cache
+E:\_VS project\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.csproj.CoreCompileInputs.cache
+E:\_VS project\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.exe
+E:\_VS project\ReportViewer\appSSRS.Desktop\obj\Debug\appSSRS.Desktop.pdb
