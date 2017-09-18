@@ -78,7 +78,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ReportFunctions.vb" />
+    <Compile Include="NorthStarTrusteeServicingReport.vb" />
+    <Compile Include="OtherFunctions.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

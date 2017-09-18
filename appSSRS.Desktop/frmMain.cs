@@ -129,7 +129,7 @@ namespace appSSRS.Desktop
                     sqlCommand.Connection = _sqlConnection;
 
 
-                    var report = new ReportFunctions();
+                    var report = new NorthStarTrusteeServicingReport();
                     DataSet ds = new DataSet();
                     SqlDataAdapter da = new SqlDataAdapter(sqlCommand);
                     da.Fill(ds, "Query");
