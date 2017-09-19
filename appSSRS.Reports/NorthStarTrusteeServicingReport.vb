@@ -295,15 +295,11 @@
         End If
     End Function
 
-    Function MinPayIllustrationRequestOpen(ByVal view_illustration_latest_select_scenarios_illustration_run_date As Nullable(Of Date), ByVal date_request_sent_to_carrier As Nullable(Of Date)) As String
-
+    Function MinPayIllustrationRequestOpen(ByVal view_illustration_latest_select_scenarios_illustration_run_date As Nullable(Of Date), ByVal date_request_sent_to_carrier As Nullable(Of Date)) As Nullable(Of Date)
         If IsNothing(view_illustration_latest_select_scenarios_illustration_run_date) And Not IsNothing(date_request_sent_to_carrier) Then
-            Return Replace(ToText(date_request_sent_to_carrier, "M/d/yy"), " ", "")
-        Else
-            Return ""
+            Return Replace(FormatDateTime(date_request_sent_to_carrier, 2), " ", "")
         End If
     End Function
-
 
 
 
