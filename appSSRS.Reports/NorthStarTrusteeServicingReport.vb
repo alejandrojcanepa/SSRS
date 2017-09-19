@@ -263,8 +263,27 @@
         Return str
     End Function
 
+    Function PolicyValuesAge(ByVal view_policy_value_stmt_req_latest_voc_most_recent_received As Nullable(Of Date)) As String
+        If Not IsNothing(view_policy_value_stmt_req_latest_voc_most_recent_received) Then
+            Dim CurrentDate As Date
+            CurrentDate = Today()
+            Return CStr(DateDiff("d", view_policy_value_stmt_req_latest_voc_most_recent_received, CurrentDate) / 30.42)
+        End If
+    End Function
 
+    Function IllustrationRe_request(ByVal rerequest_check As String) As String
+        If rerequest_check = "T" Then
+            Return "Yes"
+        Else
+            Return "No"
+        End If
+    End Function
 
+    Function MinPayIllustrationRequestOpen(ByVal view_illustration_latest_select_scenarios_illustration_run_date As Nullable(Of Date), ByVal date_request_sent_to_carrier As Nullable(Of Date)) As Nullable(Of Date)
+        If IsNothing(view_illustration_latest_select_scenarios_illustration_run_date) And Not IsNothing(date_request_sent_to_carrier) Then
+            Return Replace(FormatDateTime(date_request_sent_to_carrier, 2), " ", "")
+        End If
+    End Function
 
 
 
