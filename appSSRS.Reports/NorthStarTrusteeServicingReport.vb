@@ -1,21 +1,5 @@
 ﻿Public Class NorthStarTrusteeServicingReport
-    Function _End(ByVal note_purchaser As String, ByVal endorsee As String) As String
-        If IsNothing(note_purchaser) Or note_purchaser = "" Then
-            Return endorsee
-        Else
-            Return note_purchaser
-        End If
-    End Function
-
-    Function _Pur(ByVal purchaser As String, ByVal VBPOAProvider As String) As String
-        If IsNothing(purchaser) Or Trim(purchaser) = "" Or Trim(purchaser) = "-" Then
-            Return VBPOAProvider
-        ElseIf Not (IsNothing(purchaser)) And Trim(purchaser) <> "" Then
-            Return purchaser
-        Else
-            Return "n/a"
-        End If
-    End Function
+    Inherits BaseReport
 
     Function GroupLabel(ByVal date_of_death As Nullable(Of Date), ByVal client As String, ByVal payoff_date_service As Nullable(Of Date), ByVal program As String, ByVal VPCProvider As String, ByVal coll_rel_agrmnt_date As Nullable(Of Date), ByVal confirmed_lapse_date As Nullable(Of Date), ByVal ltr_22_month_response As String, ByVal owner As String, ByVal policies_status As String, ByVal kbc_decision As String, ByVal view_policy_lonsdale_status_latest_status As String, ByVal strike_price_paid As String, ByVal original_strike_price_check As String, ByVal adj_strike_price_check As String, ByVal note_purchaser As String, ByVal endorsee As String, ByVal purchaser As String, ByVal VBPOAProvider As String) As String
         If Not (IsNothing(date_of_death)) Then

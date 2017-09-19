@@ -63,6 +63,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseReport.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -80,6 +81,7 @@
     </Compile>
     <Compile Include="NorthStarTrusteeServicingReport.vb" />
     <Compile Include="OtherFunctions.vb" />
+    <Compile Include="ThirdPartyAuthorizationReport.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

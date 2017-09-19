@@ -80,7 +80,7 @@ namespace appSSRS.Desktop
 
                     DataSet ds = new DataSet();
                     SqlDataAdapter da = new SqlDataAdapter(sqlCommand);
-                    da.FillSchema(ds, SchemaType.Source,  "Test");
+                    da.FillSchema(ds, SchemaType.Source, "Test");
                     DataTable dt2 = new DataTable();
                     foreach (DataColumn dc in ds.Tables[0].Columns)
                     {
@@ -128,59 +128,11 @@ namespace appSSRS.Desktop
                     sqlCommand.CommandText = sqlQuery;
                     sqlCommand.Connection = _sqlConnection;
 
-
-                    var report = new NorthStarTrusteeServicingReport();
                     DataSet ds = new DataSet();
                     SqlDataAdapter da = new SqlDataAdapter(sqlCommand);
                     da.Fill(ds, "Query");
 
-                    /*
-                   program	                                    System.String	True
-                   strike_price_paid	                        System.DateTime	True
-                   date_of_death	                            System.DateTime	True
-                   client	                                    System.String	True
-                   payoff_date_service	                        System.DateTime	True
-                   view_policy_consolidated.provider	        System.String	True
-                   coll_rel_agrmnt_date	                    System.DateTime	True
-                   confirmed_lapse_date	                    System.DateTime	True
-                   ltr_22_month_response	                    System.String	True
-                   owner	                                    System.String	True
-                   policies.status	                            System.String	True
-                   kbc_decision	                            System.String	True
-                   view_policy_lonsdale_status_latest.status	System.String	True
-                   original_strike_price_check	                System.String	True
-                   note_purchaser	                            System.String	True
-                   endorsee	                                System.String	True
-                   purchaser	                                System.String	True
-                   view_best_purchaser_offer_accepted.provider	System.String	True
-                   */
-
-                    foreach (DataRow dr in ds.Tables[0].Rows)
-                    {
-                        DateTime? date_of_death = null;
-                        DateTime? payoff_date_service = null;
-                        DateTime? coll_rel_agrmnt_date = null;
-                        DateTime? confirmed_lapse_date = null;
-
-                        if (dr["date_of_death"] != DBNull.Value)
-                            date_of_death = Convert.ToDateTime(dr["date_of_death"]);
-
-                        if (dr["payoff_date_service"] != DBNull.Value)
-                            payoff_date_service = Convert.ToDateTime(dr["payoff_date_service"]);
-
-                        if (dr["coll_rel_agrmnt_date"] != DBNull.Value)
-                            coll_rel_agrmnt_date = Convert.ToDateTime(dr["coll_rel_agrmnt_date"]);
-
-                        if (dr["confirmed_lapse_date"] != DBNull.Value)
-                            confirmed_lapse_date = Convert.ToDateTime(dr["confirmed_lapse_date"]);
-
-                        var result = report.GroupBy(dr["program"].ToString(), dr["strike_price_paid"].ToString(), dr["original_strike_price_check"].ToString(), date_of_death, dr["client"].ToString(),
-                                       payoff_date_service, dr["view_policy_consolidated.provider"].ToString(), coll_rel_agrmnt_date, confirmed_lapse_date,
-                                       dr["ltr_22_month_response"].ToString(), dr["owner"].ToString(), dr["policies.status"].ToString(),
-                                       dr["kbc_decision"].ToString(), dr["view_policy_lonsdale_status_latest.status"].ToString(), dr["original_strike_price_check"].ToString(),
-                                       dr["note_purchaser"].ToString(), dr["endorsee"].ToString(), dr["purchaser"].ToString(), dr["view_best_purchaser_offer_accepted.provider"].ToString());
-                    }
-
+                    TestThirdPartyAuthorizationReport(ds);
 
                     MessageBox.Show("Query Executed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -198,6 +150,38 @@ namespace appSSRS.Desktop
             {
                 MessageBox.Show("Ingrese una consulta SQL");
             }
+        }
+
+        private void TestThirdPartyAuthorizationReport(DataSet ds)
+        {
+            var report = new ThirdPartyAuthorizationReport();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                DateTime? date_of_death = null;
+                DateTime? payoff_date_service = null;
+                DateTime? strike_price_paid = null;
+                DateTime? confirmed_lapse_date = null;
+
+                if (dr["date_of_death"] != DBNull.Value)
+                    date_of_death = Convert.ToDateTime(dr["date_of_death"]);
+
+                if (dr["payoff_date_service"] != DBNull.Value)
+                    payoff_date_service = Convert.ToDateTime(dr["payoff_date_service"]);
+
+                if (dr["strike_price_paid"] != DBNull.Value)
+                    strike_price_paid = Convert.ToDateTime(dr["strike_price_paid"]);
+
+                if (dr["confirmed_lapse_date"] != DBNull.Value)
+                    confirmed_lapse_date = Convert.ToDateTime(dr["confirmed_lapse_date"]);
+
+                var result = report.GroupBy(date_of_death, dr["policies.owner"].ToString(), dr["program #"].ToString(), confirmed_lapse_date,
+                                            dr["ltr_22_month_response"].ToString(), dr["note_purchaser"].ToString(), dr["endorsee"].ToString(),
+                                            dr["purchaser"].ToString(), dr["view_best_purchaser_offer_accepted.provider"].ToString(),
+                                            dr["kbc_decision"].ToString(), dr["status"].ToString(), payoff_date_service,
+                                            dr["program"].ToString(), strike_price_paid, dr["view_policy_consolidated.provider"].ToString(),
+                                            dr["original_strike_price_check"].ToString(), dr["adj_strike_price_check"].ToString());
+            }
+
         }
 
         /// <summary>
