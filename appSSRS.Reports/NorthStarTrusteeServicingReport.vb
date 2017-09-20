@@ -285,9 +285,25 @@
         End If
     End Function
 
+    Function RateIncrease(ByVal viewlatest_rate_increase_notification_correspondence_type As String, ByVal viewlatest_rate_increase_notification_rate_increase As String) As String
+        If Not IsNothing(viewlatest_rate_increase_notification_correspondence_type) Then
+            If viewlatest_rate_increase_notification_rate_increase = "Y" Then
+                Return "Yes"
+            Else
+                Return "No"
+            End If
+        Else
+            Return ""
+        End If
+    End Function
 
-
-
+    Function SSN2(ByVal ssn As String) As String
+        If Len(ssn) = 9 Then
+            Return Left(ssn, 3) & "-" & Mid(ssn, 4, 2) & "-" & Right(ssn, 4)
+        Else
+            Return ssn
+        End If
+    End Function
 
 
     Protected Overrides Sub Finalize()
