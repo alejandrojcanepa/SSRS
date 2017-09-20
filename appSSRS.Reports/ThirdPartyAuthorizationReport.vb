@@ -127,4 +127,20 @@ Public Class ThirdPartyAuthorizationReport
 
     End Function
 
+    Function IndefiniteAuthorization(ByVal indefinite As String) As String
+        If indefinite = "T" Then
+            Return "Yes"
+        Else
+            Return ""
+        End If
+    End Function
+
+    Function COOIndefinteAuthorization(ByVal COO_Indefinite As String) As String
+        If COO_Indefinite = "T" Then
+            Return "Yes"
+        Else
+            Return ""
+        End If
+    End Function
+
 End Class
