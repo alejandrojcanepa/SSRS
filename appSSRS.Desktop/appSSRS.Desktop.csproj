@@ -101,7 +101,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SQL\p6uj9a000l1o.sql" />
+    <Content Include="SQL\UW Meds and LE Status Report - Viva - p6uj9a000n6q.sql" />
+    <Content Include="SQL\Third Party Authorization Report - p6uj9a000l1s.sql" />
+    <Content Include="SQL\NorthStar Trustee Servicing Report - p6uj9a000l1o.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
