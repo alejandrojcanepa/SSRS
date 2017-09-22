@@ -182,4 +182,104 @@
         End If
     End Function
 
+    Function _21stNextAgeChange(ByVal dob As Nullable(Of Date)) As Nullable(Of Date)
+        Return DateAdd("m", -6, Nextdob(dob))
+    End Function
+
+    Function MostRecentServiceFasanoAge(ByVal fasano_date As Nullable(Of Date)) As Integer
+        If IsNothing(fasano_date) Then
+            Return 0
+        Else
+            Dim CurrentDate As Date
+            CurrentDate = Today()
+            Return DateDiff("d", fasano_date, CurrentDate) / 30.42
+        End If
+    End Function
+
+    Function LatestHIPAANorthstar(ByVal northstar_listed As String) As String
+        If northstar_listed = "T" Then
+            Return "Yes"
+        Else
+            Return ""
+        End If
+    End Function
+
+    Function LatestHIPAASignedViaPOA(ByVal signed_via_poa As String) As String
+        If signed_via_poa = "T" Then
+            Return "Yes"
+        Else
+            Return ""
+        End If
+    End Function
+
+    Function UpdateInProgress(ByVal aps_update_in_prog As String, ByVal aps_update_in_prog2 As String, ByVal aps_update_in_prog3 As String, ByVal apsupdateinprog_c_early As String, ByVal apsupdateinprog_c_early2 As String, ByVal opportunityid As String) As String
+        If (aps_update_in_prog = "T" Or aps_update_in_prog2 = "T" Or aps_update_in_prog3 = "T" Or apsupdateinprog_c_early = "T" Or apsupdateinprog_c_early2 = "T") Or opportunityid <> "" Then
+            Return "Yes"
+        Else
+            Return "No"
+        End If
+    End Function
+
+    Function OutsideCollectionDate(ByVal latestdate As Nullable(Of Date), ByVal outside_records_collected As Nullable(Of Date)) As String
+        If DateDiff("d", latestdate, outside_records_collected) = 0 Then
+            Return "Yes"
+        Else
+            Return ""
+        End If
+    End Function
+
+    Function MostCurrentAllRecordsReceivedAge(ByVal latestdate As Nullable(Of Date)) As Integer
+        If IsNothing(latestdate) Then
+            Return 0
+        Else
+            Dim CurrentDate As Date
+            CurrentDate = Today()
+
+            Return DateDiff("d", CDate(latestdate), CurrentDate) / 30.42
+        End If
+    End Function
+
+    Function LastVisitDateAge(ByVal last_visit_date As Nullable(Of Date)) As Integer
+        If IsNothing(last_visit_date) Then
+            Return 0
+        Else
+            Dim CurrentDate As Date
+            CurrentDate = Today()
+
+            Return DateDiff("d", last_visit_date, CurrentDate) / 30.42
+        End If
+    End Function
+
+    Function UWExceptionDate(ByVal policy_exception As String, ByVal exception_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+        If policy_exception = "T" Then
+            Return exception_date
+        Else
+            Return nulldateforcrystal
+        End If
+    End Function
+
+    Function UWException(ByVal policy_exception As String, ByVal exception_value As String) As String
+        If policy_exception = "T" Then
+            Return exception_value
+        Else
+            Return ""
+        End If
+    End Function
+
+    Function UWExceptionAdd(ByVal policy_exception As String, ByVal exception_value2 As String) As String
+        If policy_exception = "T" Then
+            Return exception_value2
+        Else
+            Return ""
+        End If
+    End Function
+
+    Function LegalException(ByVal legal_exception As String, ByVal legal_exception_date As Date, ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+        If legal_exception = "T" Then
+            Return legal_exception_date
+        Else
+            Return nulldateforcrystal
+        End If
+    End Function
+
 End Class
