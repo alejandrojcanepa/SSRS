@@ -87,6 +87,7 @@
     <Compile Include="NorthStarTrusteeServicingReport.vb" />
     <Compile Include="UW Meds and LE Status Report - Viva.vb" />
     <Compile Include="ThirdPartyAuthorizationReport.vb" />
+    <Compile Include="UWMedsAndLEStatusReport2_Meridian.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
