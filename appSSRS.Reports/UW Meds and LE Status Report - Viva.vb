@@ -1,6 +1,6 @@
 ﻿Public Class UWMedsAndLEStatusReport_Viva
 
-    Function AgeOfAnniversary(ByVal aniversarydate As Nullable(Of Date)) As String
+    Function AgeOfAnniversary(ByVal aniversarydate As Nullable(Of Date))
         Dim lMonths As Double
         Dim lStartDay As Double
         Dim lEndDay As Double
@@ -29,7 +29,7 @@
         Return FormatNumber(((lMonths * 30) + (lEndDay - lStartDay) - FebruaryAdjustment) / 30, 1)
     End Function
 
-    Function Nextdob(ByVal dob As Nullable(Of Date)) As Date
+    Function Nextdob(ByVal dob As Nullable(Of Date))
         If Not (IsNothing(dob)) Then
 
             Dim dobdate As Date
@@ -41,13 +41,13 @@
     End Function
 
     'duplicated on AVSNextAgeChange
-    Function AVSAgeChange(ByVal dob As Nullable(Of Date)) As Date
+    Function AVSAgeChange(ByVal dob As Nullable(Of Date))
         If Not (IsNothing(dob)) Then
             Return DateAdd("m", -3, Nextdob(dob))
         End If
     End Function
 
-    Function OptimizedMedicalRecordsDueDate(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Date
+    Function OptimizedMedicalRecordsDueDate(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         If IsNothing(date_of_death) And Not (IsNothing(dob)) Then
             Return DateAdd("d", -1, AVSAgeChange(dob))
         Else
@@ -55,7 +55,7 @@
         End If
     End Function
 
-    Function AnnualizedLEDueDate(ByVal avs_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date), ByVal fasano_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+    Function AnnualizedLEDueDate(ByVal avs_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date), ByVal fasano_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
 
         Dim ALEDDdate As Date
         ALEDDdate = CDate("1/1/2050")
@@ -80,7 +80,7 @@
         End If
     End Function
 
-    Function OptimizedLEDueDate(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+    Function OptimizedLEDueDate(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         If IsNothing(date_of_death) And Not (IsNothing(dob)) Then
 
             Dim OLEDDdate As Date
@@ -96,7 +96,7 @@
         End If
     End Function
 
-    Function LETargetDate(ByVal program As String, ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+    Function LETargetDate(ByVal program As String, ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         '-- request #8691 and #8735
         If program = "112" Then
 
@@ -141,11 +141,11 @@
         End If
     End Function
 
-    Function MostRecentServiceAVS(ByVal avs_date As Nullable(Of Date)) As Nullable(Of Date)
+    Function MostRecentServiceAVS(ByVal avs_date As Nullable(Of Date))
         MostRecentServiceAVS = avs_date
     End Function
 
-    Function MostRecentServiceAVSAge(ByVal avs_date As Nullable(Of Date)) As Integer
+    Function MostRecentServiceAVSAge(ByVal avs_date As Nullable(Of Date))
         If IsNothing(MostRecentServiceAVS(avs_date)) Then
             Return 0
         Else
@@ -155,7 +155,7 @@
         End If
     End Function
 
-    Function AVSRolled_calc(ByVal avs_rolled As String) As String
+    Function AVSRolled_calc(ByVal avs_rolled As String)
         If avs_rolled = "T" Then
             Return "Yes"
         Else
@@ -164,7 +164,7 @@
     End Function
 
     'duplicated on AVSAgeChange
-    Function AVSNextAgeChange(ByVal dob As Nullable(Of Date)) As Nullable(Of Date)
+    Function AVSNextAgeChange(ByVal dob As Nullable(Of Date))
         AVSNextAgeChange = AVSAgeChange(dob)
     End Function
 
@@ -172,7 +172,7 @@
         MostRecentService21st = tf_date
     End Function
 
-    Function MostRecentService21stAge(ByVal tf_date As Date) As Integer
+    Function MostRecentService21stAge(ByVal tf_date As Date)
         If IsNothing(MostRecentService21st(tf_date)) Then
             Return 0
         Else
@@ -182,11 +182,11 @@
         End If
     End Function
 
-    Function _21stNextAgeChange(ByVal dob As Nullable(Of Date)) As Nullable(Of Date)
+    Function _21stNextAgeChange(ByVal dob As Nullable(Of Date))
         Return DateAdd("m", -6, Nextdob(dob))
     End Function
 
-    Function MostRecentServiceFasanoAge(ByVal fasano_date As Nullable(Of Date)) As Integer
+    Function MostRecentServiceFasanoAge(ByVal fasano_date As Nullable(Of Date))
         If IsNothing(fasano_date) Then
             Return 0
         Else
@@ -196,7 +196,7 @@
         End If
     End Function
 
-    Function LatestHIPAANorthstar(ByVal northstar_listed As String) As String
+    Function LatestHIPAANorthstar(ByVal northstar_listed As String)
         If northstar_listed = "T" Then
             Return "Yes"
         Else
@@ -204,7 +204,7 @@
         End If
     End Function
 
-    Function LatestHIPAASignedViaPOA(ByVal signed_via_poa As String) As String
+    Function LatestHIPAASignedViaPOA(ByVal signed_via_poa As String)
         If signed_via_poa = "T" Then
             Return "Yes"
         Else
@@ -212,7 +212,7 @@
         End If
     End Function
 
-    Function UpdateInProgress(ByVal aps_update_in_prog As String, ByVal aps_update_in_prog2 As String, ByVal aps_update_in_prog3 As String, ByVal apsupdateinprog_c_early As String, ByVal apsupdateinprog_c_early2 As String, ByVal opportunityid As String) As String
+    Function UpdateInProgress(ByVal aps_update_in_prog As String, ByVal aps_update_in_prog2 As String, ByVal aps_update_in_prog3 As String, ByVal apsupdateinprog_c_early As String, ByVal apsupdateinprog_c_early2 As String, ByVal opportunityid As String)
         If (aps_update_in_prog = "T" Or aps_update_in_prog2 = "T" Or aps_update_in_prog3 = "T" Or apsupdateinprog_c_early = "T" Or apsupdateinprog_c_early2 = "T") Or opportunityid <> "" Then
             Return "Yes"
         Else
@@ -220,7 +220,7 @@
         End If
     End Function
 
-    Function OutsideCollectionDate(ByVal latestdate As Nullable(Of Date), ByVal outside_records_collected As Nullable(Of Date)) As String
+    Function OutsideCollectionDate(ByVal latestdate As Nullable(Of Date), ByVal outside_records_collected As Nullable(Of Date))
         If DateDiff("d", latestdate, outside_records_collected) = 0 Then
             Return "Yes"
         Else
@@ -228,7 +228,7 @@
         End If
     End Function
 
-    Function MostCurrentAllRecordsReceivedAge(ByVal latestdate As Nullable(Of Date)) As Integer
+    Function MostCurrentAllRecordsReceivedAge(ByVal latestdate As Nullable(Of Date))
         If IsNothing(latestdate) Then
             Return 0
         Else
@@ -239,7 +239,7 @@
         End If
     End Function
 
-    Function LastVisitDateAge(ByVal last_visit_date As Nullable(Of Date)) As Integer
+    Function LastVisitDateAge(ByVal last_visit_date As Nullable(Of Date))
         If IsNothing(last_visit_date) Then
             Return 0
         Else
@@ -250,7 +250,7 @@
         End If
     End Function
 
-    Function UWExceptionDate(ByVal policy_exception As String, ByVal exception_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+    Function UWExceptionDate(ByVal policy_exception As String, ByVal exception_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         If policy_exception = "T" Then
             Return exception_date
         Else
@@ -258,7 +258,7 @@
         End If
     End Function
 
-    Function UWException(ByVal policy_exception As String, ByVal exception_value As String) As String
+    Function UWException(ByVal policy_exception As String, ByVal exception_value As String)
         If policy_exception = "T" Then
             Return exception_value
         Else
@@ -266,7 +266,7 @@
         End If
     End Function
 
-    Function UWExceptionAdd(ByVal policy_exception As String, ByVal exception_value2 As String) As String
+    Function UWExceptionAdd(ByVal policy_exception As String, ByVal exception_value2 As String)
         If policy_exception = "T" Then
             Return exception_value2
         Else
@@ -274,7 +274,7 @@
         End If
     End Function
 
-    Function LegalException(ByVal legal_exception As String, ByVal legal_exception_date As Date, ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+    Function LegalException(ByVal legal_exception As String, ByVal legal_exception_date As Date, ByVal nulldateforcrystal As Nullable(Of Date))
         If legal_exception = "T" Then
             Return legal_exception_date
         Else

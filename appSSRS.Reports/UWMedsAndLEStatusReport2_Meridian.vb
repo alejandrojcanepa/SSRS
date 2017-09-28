@@ -4,7 +4,7 @@
     ''' </summary>
     ''' <param name="dob">opportunity_ext.dob</param>
     ''' <returns></returns>
-    Function Nextdob(ByVal dob As Nullable(Of Date)) As Date
+    Function Nextdob(ByVal dob As Nullable(Of Date))
         Dim result
 
         result = DateAdd("yyyy", Year(CurrentDate()) - Year(dob), dob)
@@ -19,7 +19,7 @@
     ''' </summary>
     ''' <param name="dob">opportunity_ext.dob</param>
     ''' <returns></returns>
-    Function _21stNextAgeChange(ByVal dob As Nullable(Of Date)) As Nullable(Of Date)
+    Function _21stNextAgeChange(ByVal dob As Nullable(Of Date))
         Return DateAdd("m", -6, Nextdob(dob))
     End Function
 
@@ -29,7 +29,7 @@
     ''' </summary>
     ''' <param name="all_rec_recv_date">viewlatest_all_rec_recv_date.all_rec_recv_date</param>
     ''' <returns></returns>
-    Function AllRecsRecvdAge(ByVal all_rec_recv_date As Nullable(Of Date)) As Decimal
+    Function AllRecsRecvdAge(ByVal all_rec_recv_date As Nullable(Of Date))
         If IsNothing(AllRecsRecvd(all_rec_recv_date)) Then
             Return 0
         Else
@@ -48,7 +48,7 @@
     ''' <param name="apsupdateinprog_c_early2">underwriting.apsupdateinprog_c_early2</param>
     ''' <param name="opportunityid">view_aps_update_last_outstanding.opportunityid</param>
     ''' <returns></returns>
-    Function APSUpdateInProg(ByVal aps_update_in_prog As String, ByVal aps_update_in_prog2 As String, ByVal aps_update_in_prog3 As String, ByVal apsupdateinprog_c_early As String, ByVal apsupdateinprog_c_early2 As String, ByVal opportunityid As String) As String
+    Function APSUpdateInProg(ByVal aps_update_in_prog As String, ByVal aps_update_in_prog2 As String, ByVal aps_update_in_prog3 As String, ByVal apsupdateinprog_c_early As String, ByVal apsupdateinprog_c_early2 As String, ByVal opportunityid As String)
         If (aps_update_in_prog = "T" Or aps_update_in_prog2 = "T" Or aps_update_in_prog3 = "T" Or apsupdateinprog_c_early = "T" Or apsupdateinprog_c_early2 = "T") Or opportunityid <> "" Then
             Return "Yes"
         Else
@@ -63,7 +63,7 @@
     ''' <param name="dob">opportunity_ext.dob</param>
     ''' <returns></returns>
     ''' <remarks>duplicated on AVSNextAgeChange</remarks>
-    Function AVSAgeChange(ByVal dob As Nullable(Of Date)) As Date
+    Function AVSAgeChange(ByVal dob As Nullable(Of Date))
         If Not (IsNothing(dob)) Then
             Return DateAdd("m", -3, Nextdob(dob))
         End If
@@ -94,7 +94,7 @@
     ''' </summary>
     ''' <param name="program">View_Policy_Consolidated.Program</param>
     ''' <returns></returns>
-    Function IgnoreSyncToKBC(ByVal program As String) As Boolean
+    Function IgnoreSyncToKBC(ByVal program As String)
         '-- request #3440. meridian programs should use diff. logic (ignore the KBC sync checkbox)
         Dim prom
 
@@ -120,7 +120,7 @@
     ''' <param name="avs_rolled2">view_le_latest_flat_service_bac_nofilters.avs_rolled</param>
     ''' <param name="avs_rolled3">view_le_latest_flat_service_nofilters.avs_rolled</param>
     ''' <returns></returns>
-    Function AVSRolled(ByVal program As String, ByVal avs_rolled1 As String, ByVal avs_rolled2 As String, ByVal avs_rolled3 As String) As String
+    Function AVSRolled(ByVal program As String, ByVal avs_rolled1 As String, ByVal avs_rolled2 As String, ByVal avs_rolled3 As String)
         If program = "59" Then
             If avs_rolled2 = "T" Then
                 Return "Yes"
@@ -147,7 +147,7 @@
     ''' </summary>
     ''' <param name="dob">opportunity_ext.dob</param>
     ''' <returns></returns>
-    Function DOBString(ByVal dob As Nullable(Of Date)) As String
+    Function DOBString(ByVal dob As Nullable(Of Date))
         Return ToText(dob, "M/d/yyyy")
     End Function
 
@@ -157,7 +157,7 @@
     ''' <param name="policy_exception">policies.policy_exception</param>
     ''' <param name="exception_value">policies.exception_value</param>
     ''' <returns></returns>
-    Function Exception(ByVal policy_exception As String, ByVal exception_value As String) As String
+    Function Exception(ByVal policy_exception As String, ByVal exception_value As String)
         If policy_exception = "T" Then
             Return exception_value
         Else
@@ -172,7 +172,7 @@
     ''' <param name="exception_date">policies.exception_date</param>
     ''' <param name="nulldateforcrystal">policies.nulldateforcrystal</param>
     ''' <returns></returns>
-    Function ExceptionDate(ByVal policy_exception As String, ByVal exception_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+    Function ExceptionDate(ByVal policy_exception As String, ByVal exception_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         If policy_exception = "T" Then
             Return exception_date
         Else
@@ -187,7 +187,7 @@
     ''' <param name="dob">opportunity_ext.dob</param>
     ''' <param name="nulldateforcrystal">policies.nulldateforcrystal</param>
     ''' <returns></returns>
-    Function FortressLEDueDate(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+    Function FortressLEDueDate(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         If IsNothing(date_of_death) And Not (IsNothing(dob)) Then
 
             Dim dd As Date
@@ -211,7 +211,7 @@
     ''' <param name="dob">opportunity_ext.dob</param>
     ''' <param name="nulldateforcrystal">policies.nulldateforcrystal</param>
     ''' <returns></returns>
-    Function FortressMedicalRecordsDue(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Date
+    Function FortressMedicalRecordsDue(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         If IsNothing(date_of_death) And Not (IsNothing(dob)) Then
             Return DateAdd("d", -1, AVSAgeChange(dob))
         Else
@@ -224,7 +224,7 @@
     ''' </summary>
     ''' <param name="last_visit_date">viewlast_aps_visit_date.last_visit_date</param>
     ''' <returns></returns>
-    Function LastVisitDateAge(ByVal last_visit_date As Nullable(Of Date)) As Integer
+    Function LastVisitDateAge(ByVal last_visit_date As Nullable(Of Date))
         If IsNothing(last_visit_date) Then
             Return 0
         Else
@@ -237,7 +237,7 @@
     ''' </summary>
     ''' <param name="northstar_listed">view_hipaa_latest_signature_linked.northstar_listed</param>
     ''' <returns></returns>
-    Function LatestHIPAANorthstar(ByVal northstar_listed As String) As String
+    Function LatestHIPAANorthstar(ByVal northstar_listed As String)
         If northstar_listed = "T" Then
             Return "Yes"
         Else
@@ -250,7 +250,7 @@
     ''' </summary>
     ''' <param name="signed_via_poa">view_hipaa_latest_signature_linked.signed_via_poa</param>
     ''' <returns></returns>
-    Function LatestSignedViaPOA(ByVal signed_via_poa As String) As String
+    Function LatestSignedViaPOA(ByVal signed_via_poa As String)
         If signed_via_poa = "T" Then
             Return "Yes"
         Else
@@ -277,7 +277,7 @@
     ''' <param name="emsi_date4">view_le_latest_flat_service_monarch1_nofilters.emsi_date</param>
     ''' <param name="nulldateforcrystal">policies.nulldateforcrystal</param>
     ''' <returns></returns>
-    Function LEDUeDate(ByVal program As String, ByVal client As String, ByVal avs_date1 As Nullable(Of Date), ByVal avs_date2 As Nullable(Of Date), ByVal avs_date3 As Nullable(Of Date), ByVal avs_date4 As Nullable(Of Date), ByVal tf_date1 As Nullable(Of Date), ByVal tf_date2 As Nullable(Of Date), ByVal tf_date3 As Nullable(Of Date), ByVal tf_date4 As Nullable(Of Date), ByVal emsi_date1 As Nullable(Of Date), ByVal emsi_date2 As Nullable(Of Date), ByVal emsi_date3 As Nullable(Of Date), ByVal emsi_date4 As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+    Function LEDUeDate(ByVal program As String, ByVal client As String, ByVal avs_date1 As Nullable(Of Date), ByVal avs_date2 As Nullable(Of Date), ByVal avs_date3 As Nullable(Of Date), ByVal avs_date4 As Nullable(Of Date), ByVal tf_date1 As Nullable(Of Date), ByVal tf_date2 As Nullable(Of Date), ByVal tf_date3 As Nullable(Of Date), ByVal tf_date4 As Nullable(Of Date), ByVal emsi_date1 As Nullable(Of Date), ByVal emsi_date2 As Nullable(Of Date), ByVal emsi_date3 As Nullable(Of Date), ByVal emsi_date4 As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         '-- earliest one among the 3 + 365
         Dim d
         d = CDate("1/1/2050")
@@ -315,7 +315,7 @@
     ''' <param name="avs_date3">view_le_latest_flat_service_nofilters.avs_date</param>
     ''' <param name="avs_date4">view_le_latest_flat_service_monarch1_nofilters.avs_date</param>
     ''' <returns></returns>
-    Function MostRecentServiceAVS(ByVal program As String, ByVal client As String, ByVal avs_date1 As Nullable(Of Date), ByVal avs_date2 As Nullable(Of Date), ByVal avs_date3 As Nullable(Of Date), ByVal avs_date4 As Nullable(Of Date)) As Nullable(Of Date)
+    Function MostRecentServiceAVS(ByVal program As String, ByVal client As String, ByVal avs_date1 As Nullable(Of Date), ByVal avs_date2 As Nullable(Of Date), ByVal avs_date3 As Nullable(Of Date), ByVal avs_date4 As Nullable(Of Date))
         If program = "59" Then
             Return avs_date2
         ElseIf client = "Monarch 1" Then
@@ -337,7 +337,7 @@
     ''' <param name="tf_date3">view_le_latest_flat_service_nofilters.tf_date</param>
     ''' <param name="tf_date4">view_le_latest_flat_service_monarch1_nofilters.tf_date</param>
     ''' <returns></returns>
-    Function MostRecentService21st(ByVal program As String, ByVal client As String, ByVal tf_date1 As Nullable(Of Date), ByVal tf_date2 As Nullable(Of Date), ByVal tf_date3 As Nullable(Of Date), ByVal tf_date4 As Nullable(Of Date)) As Nullable(Of Date)
+    Function MostRecentService21st(ByVal program As String, ByVal client As String, ByVal tf_date1 As Nullable(Of Date), ByVal tf_date2 As Nullable(Of Date), ByVal tf_date3 As Nullable(Of Date), ByVal tf_date4 As Nullable(Of Date))
         If program = "59" Then
             Return tf_date2
         ElseIf client = "Monarch 1" Then
@@ -359,7 +359,7 @@
     ''' <param name="emsi_date3">view_le_latest_flat_service_nofilters.emsi_date</param>
     ''' <param name="emsi_date4">view_le_latest_flat_service_monarch1_nofilters.emsi_date</param>
     ''' <returns></returns>
-    Function MostRecentServiceEMSI(ByVal program As String, ByVal client As String, ByVal emsi_date1 As Nullable(Of Date), ByVal emsi_date2 As Nullable(Of Date), ByVal emsi_date3 As Nullable(Of Date), ByVal emsi_date4 As Nullable(Of Date)) As Nullable(Of Date)
+    Function MostRecentServiceEMSI(ByVal program As String, ByVal client As String, ByVal emsi_date1 As Nullable(Of Date), ByVal emsi_date2 As Nullable(Of Date), ByVal emsi_date3 As Nullable(Of Date), ByVal emsi_date4 As Nullable(Of Date))
         If program = "59" Then
             Return emsi_date2
         ElseIf client = "Monarch 1" Then
@@ -378,7 +378,7 @@
     ''' <param name="premiumadvancedate">policies.premiumadvancedate</param>
     ''' <param name="aniversarydate">policies.aniversarydate</param>
     ''' <returns></returns>
-    Function LETargetDate(ByVal maturity_date As Nullable(Of Date), ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date)) As Nullable(Of Date)
+    Function LETargetDate(ByVal maturity_date As Nullable(Of Date), ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date))
         '-- the LE Target Date is the actual date that is 75 to 105 days before the loan maturity date that = (later of Column I-Anniversary Date Day or Column J-Premium Advance Date Day) + 1.  
         '-- example: Policy date is 9/15/07; there is no Premium Advance Date. Target time period would be 1/3/14 to 2/3/14. The day would be the 15th +1 or the 16th. LE target date would be 1/16/14.
 
@@ -419,7 +419,7 @@
     ''' <param name="legal_exception_date">opportunity_ext.legal_exception_date</param>
     ''' <param name="nulldateforcrystal">policies.nulldateforcrystal</param>
     ''' <returns></returns>
-    Function LegalException(ByVal legal_exception As String, ByVal legal_exception_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date)) As Nullable(Of Date)
+    Function LegalException(ByVal legal_exception As String, ByVal legal_exception_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         If LegalException = "T" Then
             Return legal_exception_date
         Else
@@ -455,7 +455,7 @@
     ''' <param name="tf_le3">view_le_latest_flat_service_nofilters.tf_le</param>
     ''' <param name="tf_le4">view_le_latest_flat_service_monarch1_nofilters.tf_le</param>
     ''' <returns></returns>
-    Function MostRecentService21StLE(ByVal program As String, ByVal client As String, ByVal tf_le1 As Nullable(Of Double), ByVal tf_le2 As Nullable(Of Double), ByVal tf_le3 As Nullable(Of Double), ByVal tf_le4 As Nullable(Of Double)) As Nullable(Of Double)
+    Function MostRecentService21StLE(ByVal program As String, ByVal client As String, ByVal tf_le1 As Nullable(Of Double), ByVal tf_le2 As Nullable(Of Double), ByVal tf_le3 As Nullable(Of Double), ByVal tf_le4 As Nullable(Of Double))
         If program = "59" Then
             Return tf_le2
         ElseIf client = "Monarch 1" Then
@@ -477,7 +477,7 @@
     ''' <param name="tf_multiplier3">"view_le_latest_flat_service_nofilters"."tf_multiplier", </param>
     ''' <param name="tf_multiplier4">"view_le_latest_flat_service_monarch1_nofilters"."tf_multiplier", </param>
     ''' <returns></returns>
-    Function MostRecentService21stMortality(ByVal program As String, ByVal client As String, ByVal tf_multiplier1 As Nullable(Of Double), ByVal tf_multiplier2 As Nullable(Of Double), ByVal tf_multiplier3 As Nullable(Of Double), ByVal tf_multiplier4 As Nullable(Of Double)) As Nullable(Of Double)
+    Function MostRecentService21stMortality(ByVal program As String, ByVal client As String, ByVal tf_multiplier1 As Nullable(Of Double), ByVal tf_multiplier2 As Nullable(Of Double), ByVal tf_multiplier3 As Nullable(Of Double), ByVal tf_multiplier4 As Nullable(Of Double))
         If program = "59" Then
             Return tf_multiplier2
         ElseIf client = "Monarch 1" Then
@@ -500,7 +500,7 @@
     ''' <param name="avs_date3">view_le_latest_flat_service_nofilters.avs_date</param>
     ''' <param name="avs_date4">view_le_latest_flat_service_monarch1_nofilters.avs_date</param>
     ''' <returns></returns>
-    Function MostRecentServiceAVSAge(ByVal program As String, ByVal client As String, ByVal avs_date1 As Nullable(Of Date), ByVal avs_date2 As Nullable(Of Date), ByVal avs_date3 As Nullable(Of Date), ByVal avs_date4 As Nullable(Of Date)) As Decimal
+    Function MostRecentServiceAVSAge(ByVal program As String, ByVal client As String, ByVal avs_date1 As Nullable(Of Date), ByVal avs_date2 As Nullable(Of Date), ByVal avs_date3 As Nullable(Of Date), ByVal avs_date4 As Nullable(Of Date))
         If IsNothing(MostRecentServiceAVS(program, client, avs_date1, avs_date2, avs_date3, avs_date4)) Then
             Return 0
         Else
@@ -519,7 +519,7 @@
     ''' <param name="avs_le3">view_le_latest_flat_service_nofilters.avs_le</param>
     ''' <param name="avs_le4">view_le_latest_flat_service_monarch1_nofilters.avs_le</param>
     ''' <returns></returns>
-    Function MostRecentServiceAVSLE(ByVal program As String, ByVal client As String, ByVal avs_le1 As Nullable(Of Double), ByVal avs_le2 As Nullable(Of Double), ByVal avs_le3 As Nullable(Of Double), ByVal avs_le4 As Nullable(Of Double)) As Nullable(Of Double)
+    Function MostRecentServiceAVSLE(ByVal program As String, ByVal client As String, ByVal avs_le1 As Nullable(Of Double), ByVal avs_le2 As Nullable(Of Double), ByVal avs_le3 As Nullable(Of Double), ByVal avs_le4 As Nullable(Of Double))
         If program = "59" Then
             Return avs_le2
         ElseIf client = "Monarch 1" Then
@@ -541,7 +541,7 @@
     ''' <param name="avs_multiplier3">view_le_latest_flat_service_nofilters.avs_multiplier</param>
     ''' <param name="avs_multiplier4">view_le_latest_flat_service_monarch1_nofilters.avs_multiplier</param>
     ''' <returns></returns>
-    Function MostRecentServiceAVSMortality(ByVal program As String, ByVal client As String, ByVal avs_multiplier1 As Nullable(Of Double), ByVal avs_multiplier2 As Nullable(Of Double), ByVal avs_multiplier3 As Nullable(Of Double), ByVal avs_multiplier4 As Nullable(Of Double)) As Nullable(Of Double)
+    Function MostRecentServiceAVSMortality(ByVal program As String, ByVal client As String, ByVal avs_multiplier1 As Nullable(Of Double), ByVal avs_multiplier2 As Nullable(Of Double), ByVal avs_multiplier3 As Nullable(Of Double), ByVal avs_multiplier4 As Nullable(Of Double))
         If program = "59" Then
             Return avs_multiplier2
         ElseIf client = "Monarch 1" Then
@@ -563,7 +563,7 @@
     ''' <param name="emsi_date3">view_le_latest_flat_service_nofilters.emsi_date</param>
     ''' <param name="emsi_date4">view_le_latest_flat_service_monarch1_nofilters.emsi_date</param>
     ''' <returns></returns>
-    Function MostRecentServiceEMSIAge(ByVal program As String, ByVal client As String, ByVal emsi_date1 As Nullable(Of Date), ByVal emsi_date2 As Nullable(Of Date), ByVal emsi_date3 As Nullable(Of Date), ByVal emsi_date4 As Nullable(Of Date)) As Decimal
+    Function MostRecentServiceEMSIAge(ByVal program As String, ByVal client As String, ByVal emsi_date1 As Nullable(Of Date), ByVal emsi_date2 As Nullable(Of Date), ByVal emsi_date3 As Nullable(Of Date), ByVal emsi_date4 As Nullable(Of Date))
         If IsNothing(MostRecentServiceEMSI(program, client, emsi_date1, emsi_date2, emsi_date3, emsi_date4)) Then
             Return 0
         Else
@@ -581,7 +581,7 @@
     ''' <param name="emsi_le3">view_le_latest_flat_service_nofilters.emsi_le</param>
     ''' <param name="emsi_le4">view_le_latest_flat_service_monarch1_nofilters.emsi_le</param>
     ''' <returns></returns>
-    Function MostRecentServiceEMSILE(ByVal program As String, ByVal client As String, ByVal emsi_le1 As Nullable(Of Double), ByVal emsi_le2 As Nullable(Of Double), ByVal emsi_le3 As Nullable(Of Double), ByVal emsi_le4 As Nullable(Of Double)) As Nullable(Of Double)
+    Function MostRecentServiceEMSILE(ByVal program As String, ByVal client As String, ByVal emsi_le1 As Nullable(Of Double), ByVal emsi_le2 As Nullable(Of Double), ByVal emsi_le3 As Nullable(Of Double), ByVal emsi_le4 As Nullable(Of Double))
         If program = "59" Then
             Return emsi_le2
         ElseIf client = "Monarch 1" Then
@@ -603,7 +603,7 @@
     ''' <param name="emsi_multiplier3">view_le_latest_flat_service_nofilters.emsi_multiplier</param>
     ''' <param name="emsi_multiplier4">view_le_latest_flat_service_monarch1_nofilters.emsi_multiplier</param>
     ''' <returns></returns>
-    Function MostRecentServiceEMSIMortality(ByVal program As String, ByVal client As String, ByVal emsi_multiplier1 As Nullable(Of Double), ByVal emsi_multiplier2 As Nullable(Of Double), ByVal emsi_multiplier3 As Nullable(Of Double), ByVal emsi_multiplier4 As Nullable(Of Double)) As Nullable(Of Double)
+    Function MostRecentServiceEMSIMortality(ByVal program As String, ByVal client As String, ByVal emsi_multiplier1 As Nullable(Of Double), ByVal emsi_multiplier2 As Nullable(Of Double), ByVal emsi_multiplier3 As Nullable(Of Double), ByVal emsi_multiplier4 As Nullable(Of Double))
         If program = "59" Then
             Return emsi_multiplier2
         ElseIf client = "Monarch 1" Then
@@ -693,7 +693,7 @@
     ''' <param name="all_rec_recv_date">viewlatest_all_rec_recv_date.all_rec_recv_date</param>
     ''' <returns></returns>
     ''' <remarks>This funcion should not be migrated to SSRS. Just use the original field instead</remarks>
-    Function AllRecsRecvd(ByVal all_rec_recv_date As Nullable(Of Date)) As Nullable(Of Date)
+    Function AllRecsRecvd(ByVal all_rec_recv_date As Nullable(Of Date))
         Return all_rec_recv_date
     End Function
 
@@ -704,7 +704,7 @@
     ''' <param name="format"></param>
     ''' <returns></returns>
     ''' <remarks>This funcion should not be migrated to SSRS.</remarks>
-    Function ToText(ByVal d As Date, ByVal format As String) As String
+    Function ToText(ByVal d As Date, ByVal format As String)
         Return d.ToString(format)
     End Function
 
