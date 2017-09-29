@@ -279,7 +279,7 @@
         End If
     End Function
 
-    Function MinPayIllustrationRequestOpen(ByVal view_illustration_latest_select_scenarios_illustration_run_date As Nullable(Of Date), ByVal date_request_sent_to_carrier As Nullable(Of Date)) As Nullable(Of Date)
+    Function MinPayIllustrationRequestOpen(ByVal view_illustration_latest_select_scenarios_illustration_run_date As Nullable(Of Date), ByVal date_request_sent_to_carrier As Nullable(Of Date)) As Date
         If IsNothing(view_illustration_latest_select_scenarios_illustration_run_date) And Not IsNothing(date_request_sent_to_carrier) Then
             Return date_request_sent_to_carrier
         End If
