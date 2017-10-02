@@ -67,7 +67,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BAC Insured Call Log %28Internal%29.vb" />
     <Compile Include="Policy Portfolio Insured Call Log Report - Copia.vb" />
     <Compile Include="Bac Insured Call.vb" />
     <Compile Include="BankSubmission.vb" />

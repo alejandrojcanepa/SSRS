@@ -1,4 +1,4 @@
-﻿Public Class BacInsuredCall
+﻿Public Class BacInsuredCall_and_BACInsuredCallLogInternal
 
     Function ContactNumber(ByVal Contact_Number As String) As String
         If Not IsNothing(Contact_Number) Then
@@ -15,4 +15,3 @@
     End Function
 
 End Class
-
