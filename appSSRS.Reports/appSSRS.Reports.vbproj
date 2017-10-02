@@ -67,6 +67,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BAC Insured Call Log %28Internal%29.vb" />
     <Compile Include="Policy Portfolio Insured Call Log Report - Copia.vb" />
     <Compile Include="Bac Insured Call.vb" />
     <Compile Include="BankSubmission.vb" />
@@ -89,6 +90,7 @@
     <Compile Include="NorthStarTrusteeServicingReport.vb" />
     <Compile Include="UW Meds and LE Status Report - Viva.vb" />
     <Compile Include="ThirdPartyAuthorizationReport.vb" />
+    <Compile Include="UWMedsAndLEStatusReport2_Meridian.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

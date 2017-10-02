@@ -132,7 +132,8 @@ namespace appSSRS.Desktop
                     SqlDataAdapter da = new SqlDataAdapter(sqlCommand);
                     da.Fill(ds, "Query");
 
-                    TestThirdPartyAuthorizationReport(ds);
+                    //TestThirdPartyAuthorizationReport(ds);
+                    NorthStarTrusteeServicing(ds);
 
                     MessageBox.Show("Query Executed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -151,6 +152,25 @@ namespace appSSRS.Desktop
                 MessageBox.Show("Ingrese una consulta SQL");
             }
         }
+
+        private void NorthStarTrusteeServicing(DataSet ds)
+        {
+            var report = new NorthStarTrusteeServicingReport();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                DateTime? view_illustration_latest_other_illustration_run_date = null;
+                DateTime? date_request_sent_to_carrier = null;
+
+                if (dr["view_illustration_latest_other_illustration_run_date"] != DBNull.Value)
+                    view_illustration_latest_other_illustration_run_date = Convert.ToDateTime(dr["view_illustration_latest_other_illustration_run_date"]);
+
+                if (dr["date_request_sent_to_carrier"] != DBNull.Value)
+                    date_request_sent_to_carrier = Convert.ToDateTime(dr["date_request_sent_to_carrier"]);
+
+                var result = report.MinPayIllustrationRequestOpen(view_illustration_latest_other_illustration_run_date, date_request_sent_to_carrier);
+            }
+        }
+
 
         private void TestThirdPartyAuthorizationReport(DataSet ds)
         {
