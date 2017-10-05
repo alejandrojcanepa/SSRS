@@ -1,20 +1,9 @@
 ﻿Public Class BankSubmission
-    ''' <summary>
-    ''' Insured_Age
-    ''' </summary>
-    ''' <param name="dob">Matchs DB field opportunity_ext.dob</param>
-    ''' <param name="submission_date">Matchs DB field bank_submission.submission_date</param>
-    ''' <returns></returns>
+
     Function Insured_Age(ByVal dob As Nullable(Of Date), ByVal submission_date As Nullable(Of Date)) As Decimal
         Return Round(DateDiff("D", dob, submission_date) / 365.25, 2)
     End Function
 
-    ''' <summary>
-    ''' Age Check
-    ''' </summary>
-    ''' <param name="dob">Matchs DB field opportunity_ext.dob</param>
-    ''' <param name="submission_date">Matchs DB field bank_submission.submission_date</param>
-    ''' <returns></returns>
     Function Age_Check(ByVal dob As Nullable(Of Date), ByVal submission_date As Nullable(Of Date)) As String
         If Insured_Age(dob, submission_date) > 70.0 Then
             Return "G"
@@ -25,11 +14,6 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' DB_Check
-    ''' </summary>
-    ''' <param name="deathbenefit">Matchs DB field policies.deathbenefit</param>
-    ''' <returns></returns>
     Function DB_Check(ByVal deathbenefit As Decimal) As String
         If deathbenefit > 20000000 Then
             Return "R"
@@ -40,12 +24,6 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' Illustration_Date
-    ''' </summary>
-    ''' <param name="illustration_date_overwrite">Matchs DB field bank_submission.illustration_date_overwrite</param>
-    ''' <param name="illustration_rec_latest">Matchs DB field view_illustration_latest_scenario1.illustration_rec_latest</param>
-    ''' <returns></returns>
     Function Illustration_Date(ByVal illustration_date_overwrite As Nullable(Of Date), ByVal illustration_rec_latest As Nullable(Of Date)) As Nullable(Of Date)
         If Not IsNothing(illustration_date_overwrite) Then
             Return illustration_date_overwrite
@@ -54,13 +32,6 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' Illus_Check
-    ''' </summary>
-    ''' <param name="illustration_date_overwrite">Matchs DB field bank_submission.illustration_date_overwrite</param>
-    ''' <param name="illustration_rec_latest">Matchs DB field view_illustration_latest_scenario1.illustration_rec_latest</param>
-    ''' <param name="submission_date">Matchs DB field bank_submission.submission_date</param>
-    ''' <returns></returns>
     Function Illus_Check(ByVal illustration_date_overwrite As Nullable(Of Date), ByVal illustration_rec_latest As Nullable(Of Date), ByVal submission_date As Nullable(Of Date)) As String
         Dim d
 
@@ -78,33 +49,14 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' LE_Age_1
-    ''' </summary>
-    ''' <param name="certi_date1">Matchs DB field view_le_for_bank_submission.certi_date1</param>
-    ''' <param name="submission_date">Matchs DB field bank_submission.submission_date</param>
-    ''' <returns></returns>
     Function LE_Age_1(ByVal certi_date1 As Nullable(Of Date), ByVal submission_date As Nullable(Of Date)) As Decimal
         Return Round(DateDiff("D", certi_date1, submission_date) / 30.42, 2)
     End Function
 
-    ''' <summary>
-    ''' LE_Age_2
-    ''' </summary>
-    ''' <param name="certi_date2">Matchs DB field view_le_for_bank_submission.certi_date2</param>
-    ''' <param name="submission_date">Matchs DB field bank_submission.submission_date</param>
-    ''' <returns></returns>
     Function LE_Age_2(ByVal certi_date2 As Nullable(Of Date), ByVal submission_date As Nullable(Of Date)) As Decimal
         Return Round(DateDiff("D", certi_date2, submission_date) / 30.42, 2)
     End Function
 
-    ''' <summary>
-    ''' 
-    ''' </summary>
-    ''' <param name="certi_date1">Matchs DB field view_le_for_bank_submission.certi_date1</param>
-    ''' <param name="certi_date2">Matchs DB field view_le_for_bank_submission.certi_date2</param>
-    ''' <param name="submission_date">Matchs DB field bank_submission.submission_date</param>
-    ''' <returns></returns>
     Function LE_Age_Check(ByVal certi_date1 As Nullable(Of Date), ByVal certi_date2 As Nullable(Of Date), ByVal submission_date As Nullable(Of Date)) As String
         If LE_Age_1(certi_date1, submission_date) <= 6.0 And LE_Age_2(certi_date2, submission_date) <= 6.0 Then
             Return "G"
@@ -115,12 +67,6 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' LE_Blend
-    ''' </summary>
-    ''' <param name="le1">Matchs DB field view_le_for_bank_submission.le1</param>
-    ''' <param name="le2">Matchs DB field view_le_for_bank_submission.le2</param>
-    ''' <returns></returns>
     Function LE_Blend(ByVal le1 As Double, ByVal le2 As Double) As Decimal
         'Dim l1, l2
 
@@ -136,12 +82,6 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' LE_Discrepancy
-    ''' </summary>
-    ''' <param name="le1">Matchs DB field view_le_for_bank_submission.le1</param>
-    ''' <param name="le2">Matchs DB field view_le_for_bank_submission.le2</param>
-    ''' <returns></returns>
     Function LE_Discrepancy(ByVal le1 As Double, ByVal le2 As Double) As Decimal
         'Dim l1, l2, r
 
@@ -162,12 +102,6 @@
 
     End Function
 
-    ''' <summary>
-    ''' LE_Check
-    ''' </summary>
-    ''' <param name="le1">Matchs DB field view_le_for_bank_submission.le1</param>
-    ''' <param name="le2">Matchs DB field view_le_for_bank_submission.le2</param>
-    ''' <returns></returns>
     Function LE_Check(ByVal le1 As Double, ByVal le2 As Double) As String
         If LE_Discrepancy(le1, le2) > 0.25 Then
             Return "Y"
@@ -195,22 +129,10 @@
         'formula = r
     End Function
 
-    ''' <summary>
-    ''' LE_Discrepancy_Str
-    ''' </summary>
-    ''' <param name="le1">Matchs DB field view_le_for_bank_submission.le1</param>
-    ''' <param name="le2">Matchs DB field view_le_for_bank_submission.le2</param>
-    ''' <returns></returns>
     Function LE_Discrepancy_Str(ByVal le1 As Double, ByVal le2 As Double) As String
-        Return CStr(Round(LE_Discrepancy(le1, le2) * 100, 0)) & "%"
+        Return CStr(Round(LE_Discrepancy(le1, le2) * 100, 0)) & ".00%"
     End Function
 
-    ''' <summary>
-    ''' LE2_Check
-    ''' </summary>
-    ''' <param name="le1">Matchs DB field view_le_for_bank_submission.le1</param>
-    ''' <param name="le2">Matchs DB field view_le_for_bank_submission.le2</param>
-    ''' <returns></returns>
     Function LE2_Check(ByVal le1 As Double, ByVal le2 As Double) As String
         If LE_Blend(le1, le2) < 12 Or LE_Blend(le1, le2) > 180 Then
             Return "R"
@@ -221,12 +143,6 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' LTV
-    ''' </summary>
-    ''' <param name="loan_amt">Matchs DB field bank_submission.loan_amt</param>
-    ''' <param name="policy_value">Matchs DB field bank_submission.policy_value</param>
-    ''' <returns></returns>
     Function LTV(ByVal loan_amt As Decimal, ByVal policy_value As Decimal) As Decimal
         'Dim l, v
 
@@ -240,12 +156,6 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' LTV_Check
-    ''' </summary>
-    ''' <param name="loan_amt">Matchs DB field bank_submission.loan_amt</param>
-    ''' <param name="policy_value">Matchs DB field bank_submission.policy_value</param>
-    ''' <returns></returns>
     Function LTV_Check(ByVal loan_amt As Decimal, ByVal policy_value As Decimal) As String
         If LTV_Check(loan_amt, policy_value) = 0 Then
             Return ""
@@ -258,24 +168,12 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' LTV_String
-    ''' </summary>
-    ''' <param name="loan_amt">Matchs DB field bank_submission.loan_amt</param>
-    ''' <param name="policy_value">Matchs DB field bank_submission.policy_value</param>
-    ''' <returns></returns>
     Function LTV_String(ByVal loan_amt As Decimal, ByVal policy_value As Decimal) As String
         If LTV(loan_amt, policy_value) > 0 Then
             Return LTV(loan_amt, policy_value) * 100 & "%"
         End If
     End Function
 
-    ''' <summary>
-    ''' MER
-    ''' </summary>
-    ''' <param name="mat_ext_rider_1_yn">Matchs DB field policy_audit.mat_ext_rider_1_yn</param>
-    ''' <param name="mat_ext_rider_2_yn">Matchs DB field policy_audit.mat_ext_rider_2_yn</param>
-    ''' <returns></returns>
     Function MER(ByVal mat_ext_rider_1_yn As String, ByVal mat_ext_rider_2_yn As String) As String
         If mat_ext_rider_1_yn = "No" Or mat_ext_rider_2_yn = "No" Then
             Return "No"
@@ -284,12 +182,6 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' MER_Check
-    ''' </summary>
-    ''' <param name="mat_ext_rider_1_yn">Matchs DB field policy_audit.mat_ext_rider_1_yn</param>
-    ''' <param name="mat_ext_rider_2_yn">Matchs DB field policy_audit.mat_ext_rider_2_yn</param>
-    ''' <returns></returns>
     Function MER_Check(ByVal mat_ext_rider_1_yn As String, ByVal mat_ext_rider_2_yn As String) As String
         If MER(mat_ext_rider_1_yn, mat_ext_rider_2_yn) = "No" Then
             Return "Y"
@@ -298,12 +190,7 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' Raiting_Check
-    ''' </summary>
-    ''' <param name="sp">Matchs DB field view_carrier_latest_rating.sp</param>
-    ''' <returns></returns>
-    Function Raiting_Check(ByVal sp As String) As String
+    Function Rating_Check(ByVal sp As String) As String
         Dim r
 
         If sp = "" Then
@@ -326,45 +213,51 @@
         End If
     End Function
 
-    ''' <summary>
-    ''' ROP
-    ''' </summary>
-    ''' <param name="VPCRop">Matchs DB field view_policy_consolidated.rop</param>
-    ''' <returns></returns>
-    Function ROP(ByVal VPCRop As String) As String
-        If VPCRop = "T" Then
+    Function ROP(ByVal VPCrop As String) As String
+        If VPCrop = "T" Then
             Return "Yes"
         Else
             Return "No"
         End If
     End Function
 
-    ''' <summary>
-    ''' ROP_Check
-    ''' </summary>
-    ''' <param name="VPCRop">Matchs DB field view_policy_consolidated.rop</param>
-    ''' <returns></returns>
-    Function ROP_Check(ByVal VPCRop As String) As String
-        If VPCRop = "T" Then
+    Function ROP_Check(ByVal VPCrop As String) As String
+        If VPCrop = "T" Then
             Return "Y"
         Else
             Return "G"
         End If
     End Function
 
-    ''' <summary>
-    ''' Status_Check
-    ''' </summary>
-    ''' <param name="policy_status">Matchs DB field view_premium_latest_by_source_date.policy_status</param>
-    ''' <returns></returns>
     Function Status_Check(ByVal policy_status As String) As String
-        'TODO: Verificar que funcione correctamente. El original chequeaba que la comparación sea por string.:
-        'InStr( {View_Premium_Latest_By_Source_Date.POLICY_STATUS}, "grace", 1 )
-
         If InStr(policy_status, "grace") > 0 Then
             Return "Y"
         Else
             Return "G"
+        End If
+    End Function
+
+    Function Picture1(ByVal audit1 As String, ByVal audit1_d As String) As Boolean
+        If IsNothing(audit1) Or IsNothing(audit1_d) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Function Picture2(ByVal audit2 As String, ByVal audit2_d As String) As Boolean
+        If IsNothing(audit2) Or IsNothing(audit2_d) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Function Picture3(ByVal audit3 As String, ByVal audit3_d As String) As Boolean
+        If IsNothing(audit3) Or IsNothing(audit3_d) Then
+            Return True
+        Else
+            Return False
         End If
     End Function
 
