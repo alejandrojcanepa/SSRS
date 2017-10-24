@@ -24,7 +24,7 @@ namespace appSSRS.Desktop
 
             // Seteamos path por default
             txtPath.Text = Path.Combine(Application.StartupPath, @"..\..\SQL\p6uj9a000l1o.sql");
-
+            Test_LTV_String();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace appSSRS.Desktop
                     da.Fill(ds, "Query");
 
                     //TestThirdPartyAuthorizationReport(ds);
-                    NorthStarTrusteeServicing(ds);
+                    NorthStarTrusteeServicing(ds);                    
 
                     MessageBox.Show("Query Executed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -169,6 +169,12 @@ namespace appSSRS.Desktop
 
                 var result = report.MinPayIllustrationRequestOpen(view_illustration_latest_other_illustration_run_date, date_request_sent_to_carrier);
             }
+        }
+
+        private void Test_LTV_String()
+        {
+            var bs = new BankSubmission();
+            var result = bs.LTV_String(null, null);
         }
 
 

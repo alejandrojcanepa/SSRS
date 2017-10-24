@@ -143,32 +143,32 @@
         End If
     End Function
 
-    Function LTV(ByVal loan_amt As Decimal, ByVal policy_value As Decimal) As Decimal
-        'Dim l, v
+    Function LTV(ByVal loan_amt As Nullable(Of Decimal), ByVal policy_value As Nullable(Of Decimal)) As Decimal
+        Dim l, v
 
-        'l = {BANK_SUBMISSION.LOAN_AMT}
-        'v = {BANK_SUBMISSION.POLICY_VALUE}
+        l = loan_amt
+        v = policy_value
 
-        If policy_value > 0 And loan_amt > 0 Then
-            Return Round(loan_amt / policy_value, 2)
+        If v > 0 And l > 0 Then
+            Return Round(l / v, 2)
         Else
             Return 0
         End If
     End Function
 
     Function LTV_Check(ByVal loan_amt As Decimal, ByVal policy_value As Decimal) As String
-        If LTV_Check(loan_amt, policy_value) = 0 Then
+        If LTV(loan_amt, policy_value) = 0 Then
             Return ""
-        ElseIf LTV_Check(loan_amt, policy_value) <= 0.7 Then
+        ElseIf LTV(loan_amt, policy_value) <= 0.7 Then
             Return "G"
-        ElseIf LTV_Check(loan_amt, policy_value) <= 0.75 Then
+        ElseIf LTV(loan_amt, policy_value) <= 0.75 Then
             Return "Y"
         Else
             Return "R"
         End If
     End Function
 
-    Function LTV_String(ByVal loan_amt As Decimal, ByVal policy_value As Decimal) As String
+    Function LTV_String(ByVal loan_amt As Nullable(Of Decimal), ByVal policy_value As Nullable(Of Decimal)) As String
         If LTV(loan_amt, policy_value) > 0 Then
             Return LTV(loan_amt, policy_value) * 100 & "%"
         End If
