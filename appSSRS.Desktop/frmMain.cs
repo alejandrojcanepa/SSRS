@@ -24,7 +24,7 @@ namespace appSSRS.Desktop
 
             // Seteamos path por default
             txtPath.Text = Path.Combine(Application.StartupPath, @"..\..\SQL\p6uj9a000l1o.sql");
-            Test_LTV_String();
+            Test_LETargetDate();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -171,10 +171,10 @@ namespace appSSRS.Desktop
             }
         }
 
-        private void Test_LTV_String()
+        private void Test_LETargetDate()
         {
-            var bs = new BankSubmission();
-            var result = bs.LTV_String(null, null);
+            var uwm = new UWMedsAndLEStatusReport2_Meridian();
+            var result = uwm.LETargetDate(new DateTime(2016, 12, 08), new DateTime(2005,10,14,07,0,0), new DateTime(2005, 09, 09, 21, 18, 36));
         }
 
 
