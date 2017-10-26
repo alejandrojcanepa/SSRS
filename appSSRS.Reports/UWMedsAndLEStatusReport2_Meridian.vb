@@ -40,22 +40,22 @@
         End If
     End Function
 
-    Function AVSPrimaryDiagnosis(ByVal program As String, ByVal VLLFS2Navs_impairment As String, ByVal VLLFSBNavs_impairment As String, ByVal VLLFSNavs_impairment As String)
-        If program = "59" Then
+    Function AVSPrimaryDiagnosis(ByVal Policy_Level_Program__ As String, ByVal VLLFS2Navs_impairment As String, ByVal VLLFSBNavs_impairment As String, ByVal VLLFSNavs_impairment As String)
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNavs_impairment
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Navs_impairment
         Else
             Return VLLFSNavs_impairment
         End If
     End Function
 
-    Function IgnoreSyncToKBC(ByVal program As String)
-        '-- request #3440. meridian programs should use diff. logic (ignore the KBC sync checkbox)
+    Function IgnoreSyncToKBC(ByVal Policy_Level_Program__ As String)
+        '-- request #3440. meridian Policy_Level_Program__s should use diff. logic (ignore the KBC sync checkbox)
         Dim prom
 
-        If IsNumeric(program) Then
-            prom = CDbl(program)
+        If IsNumeric(Policy_Level_Program__) Then
+            prom = CDbl(Policy_Level_Program__)
 
             If prom >= 53 And prom < 59 Then
                 Return True
@@ -68,14 +68,14 @@
 
     End Function
 
-    Function AVSRolled(ByVal program As String, ByVal VLLFS2Navs_rolled As String, ByVal VLLFSBNavs_rolled As String, ByVal VLLFSNavs_rolled As String)
-        If program = "59" Then
+    Function AVSRolled(ByVal Policy_Level_Program__ As String, ByVal VLLFS2Navs_rolled As String, ByVal VLLFSBNavs_rolled As String, ByVal VLLFSNavs_rolled As String)
+        If Policy_Level_Program__ = "59" Then
             If VLLFSBNavs_rolled = "T" Then
                 Return "Yes"
             Else
                 Return ""
             End If
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             If VLLFS2Navs_rolled = "T" Then
                 Return "Yes"
             Else
@@ -159,24 +159,24 @@
         End If
     End Function
 
-    Function LEDUeDate(ByVal program As String, ByVal client As String, ByVal VLLFS2Navs_date As Nullable(Of Date), ByVal VLLFSBNavs_date As Nullable(Of Date), ByVal VLLFSNavs_date As Nullable(Of Date), ByVal avs_date As Nullable(Of Date), ByVal VLLFS2Ntf_date As Nullable(Of Date), ByVal VLLFSBNtf_date As Nullable(Of Date), ByVal VLLFSNtf_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date), ByVal VLLFS2Nemsi_date As Nullable(Of Date), ByVal VLLFSBNemsi_date As Nullable(Of Date), ByVal VLLFSNemsi_date As Nullable(Of Date), ByVal emsi_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
+    Function LEDueDate(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Navs_date As Nullable(Of Date), ByVal VLLFSBNavs_date As Nullable(Of Date), ByVal VLLFSNavs_date As Nullable(Of Date), ByVal avs_date As Nullable(Of Date), ByVal VLLFS2Ntf_date As Nullable(Of Date), ByVal VLLFSBNtf_date As Nullable(Of Date), ByVal VLLFSNtf_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date), ByVal VLLFS2Nemsi_date As Nullable(Of Date), ByVal VLLFSBNemsi_date As Nullable(Of Date), ByVal VLLFSNemsi_date As Nullable(Of Date), ByVal emsi_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
         '-- earliest one among the 3 + 365
         Dim d
         d = CDate("1/1/2050")
 
-        If Not IsNothing(MostRecentServiceAVS(program, client, VLLFS2Navs_date, VLLFSBNavs_date, VLLFSNavs_date, avs_date)) Then
-            d = CDate(MostRecentServiceAVS(program, client, VLLFS2Navs_date, VLLFSBNavs_date, VLLFSNavs_date, avs_date))
+        If Not IsNothing(MostRecentServiceAVS(Policy_Level_Program__, client, VLLFS2Navs_date, VLLFSBNavs_date, VLLFSNavs_date, avs_date)) Then
+            d = CDate(MostRecentServiceAVS(Policy_Level_Program__, client, VLLFS2Navs_date, VLLFSBNavs_date, VLLFSNavs_date, avs_date))
         End If
 
-        If Not IsNothing(MostRecentService21st(program, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date)) Then
-            If MostRecentService21st(program, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date) < d Then
-                d = CDate(MostRecentService21st(program, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date))
+        If Not IsNothing(MostRecentService21st(Policy_Level_Program__, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date)) Then
+            If MostRecentService21st(Policy_Level_Program__, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date) < d Then
+                d = CDate(MostRecentService21st(Policy_Level_Program__, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date))
             End If
         End If
 
-        If Not IsNothing(MostRecentServiceEMSI(program, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date)) Then
-            If MostRecentServiceEMSI(program, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date) < d Then
-                d = CDate(MostRecentServiceEMSI(program, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date))
+        If Not IsNothing(MostRecentServiceEMSI(Policy_Level_Program__, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date)) Then
+            If MostRecentServiceEMSI(Policy_Level_Program__, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date) < d Then
+                d = CDate(MostRecentServiceEMSI(Policy_Level_Program__, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date))
             End If
         End If
 
@@ -187,36 +187,36 @@
         End If
     End Function
 
-    Function MostRecentServiceAVS(ByVal program As String, ByVal client As String, ByVal VLLFS2Navs_date As Nullable(Of Date), ByVal VLLFSBNavs_date As Nullable(Of Date), ByVal VLLFSNavs_date As Nullable(Of Date), ByVal avs_date As Nullable(Of Date))
-        If program = "59" Then
+    Function MostRecentServiceAVS(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Navs_date As Nullable(Of Date), ByVal VLLFSBNavs_date As Nullable(Of Date), ByVal VLLFSNavs_date As Nullable(Of Date), ByVal avs_date As Nullable(Of Date))
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNavs_date
         ElseIf client = "Monarch 1" Then
             Return avs_date
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Navs_date
         Else
             Return VLLFSNavs_date
         End If
     End Function
 
-    Function MostRecentService21st(ByVal program As String, ByVal client As String, ByVal VLLFS2Ntf_date As Nullable(Of Date), ByVal VLLFSBNtf_date As Nullable(Of Date), ByVal VLLFSNtf_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date))
-        If program = "59" Then
+    Function MostRecentService21st(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Ntf_date As Nullable(Of Date), ByVal VLLFSBNtf_date As Nullable(Of Date), ByVal VLLFSNtf_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date))
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNtf_date
         ElseIf client = "Monarch 1" Then
             Return tf_date
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Ntf_date
         Else
             Return VLLFSNtf_date
         End If
     End Function
 
-    Function MostRecentServiceEMSI(ByVal program As String, ByVal client As String, ByVal VLLFS2Nemsi_date As Nullable(Of Date), ByVal VLLFSBNemsi_date As Nullable(Of Date), ByVal VLLFSNemsi_date As Nullable(Of Date), ByVal emsi_date As Nullable(Of Date))
-        If program = "59" Then
+    Function MostRecentServiceEMSI(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Nemsi_date As Nullable(Of Date), ByVal VLLFSBNemsi_date As Nullable(Of Date), ByVal VLLFSNemsi_date As Nullable(Of Date), ByVal emsi_date As Nullable(Of Date))
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNemsi_date
         ElseIf client = "Monarch 1" Then
             Return emsi_date
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Nemsi_date
         Else
             Return VLLFSNemsi_date
@@ -272,102 +272,102 @@
         End If
     End Function
 
-    Function MostRecentService21StAge(ByVal program As String, ByVal client As String, ByVal VLLFS2Ntf_date As Nullable(Of Date), ByVal VLLFSBNtf_date As Nullable(Of Date), ByVal VLLFSNtf_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date))
-        If IsNothing(MostRecentService21st(program, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date)) Then
+    Function MostRecentService21StAge(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Ntf_date As Nullable(Of Date), ByVal VLLFSBNtf_date As Nullable(Of Date), ByVal VLLFSNtf_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date))
+        If IsNothing(MostRecentService21st(Policy_Level_Program__, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date)) Then
             Return 0
         Else
             Dim CurrentDate As Date
             CurrentDate = Today()
-            Return DateDiff("d", MostRecentService21st(program, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date), CurrentDate) / 30.42
+            Return DateDiff("d", MostRecentService21st(Policy_Level_Program__, client, VLLFS2Ntf_date, VLLFSBNtf_date, VLLFSNtf_date, tf_date), CurrentDate) / 30.42
         End If
     End Function
 
-    Function MostRecentService21StLE(ByVal program As String, ByVal client As String, ByVal VLLFS2Ntf_le As Nullable(Of Double), ByVal VLLFSBNtf_le As Nullable(Of Double), ByVal VLLFSNtf_le As Nullable(Of Double), ByVal tf_le As Nullable(Of Double))
-        If program = "59" Then
+    Function MostRecentService21StLE(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Ntf_le As Nullable(Of Double), ByVal VLLFSBNtf_le As Nullable(Of Double), ByVal VLLFSNtf_le As Nullable(Of Double), ByVal tf_le As Nullable(Of Double))
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNtf_le
         ElseIf client = "Monarch 1" Then
             Return tf_le
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Ntf_le
         Else
             Return VLLFSNtf_le
         End If
     End Function
 
-    Function MostRecentService21stMortality(ByVal program As String, ByVal client As String, ByVal VLLFS2Ntf_multiplier As Nullable(Of Double), ByVal VLLFSBNtf_multiplier As Nullable(Of Double), ByVal VLLFSNtf_multiplier As Nullable(Of Double), ByVal tf_multiplier As Nullable(Of Double))
-        If program = "59" Then
+    Function MostRecentService21stMortality(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Ntf_multiplier As Nullable(Of Double), ByVal VLLFSBNtf_multiplier As Nullable(Of Double), ByVal VLLFSNtf_multiplier As Nullable(Of Double), ByVal tf_multiplier As Nullable(Of Double))
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNtf_multiplier
         ElseIf client = "Monarch 1" Then
             Return tf_multiplier
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Ntf_multiplier
         Else
             Return VLLFSNtf_multiplier
         End If
     End Function
 
-    Function MostRecentServiceAVSAge(ByVal program As String, ByVal client As String, ByVal VLLFS2Navs_date As Nullable(Of Date), ByVal VLLFSBNavs_date As Nullable(Of Date), ByVal VLLFSNavs_date As Nullable(Of Date), ByVal avs_date As Nullable(Of Date))
-        If IsNothing(MostRecentServiceAVS(program, client, VLLFS2Navs_date, VLLFSBNavs_date, VLLFSNavs_date, avs_date)) Then
+    Function MostRecentServiceAVSAge(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Navs_date As Nullable(Of Date), ByVal VLLFSBNavs_date As Nullable(Of Date), ByVal VLLFSNavs_date As Nullable(Of Date), ByVal avs_date As Nullable(Of Date))
+        If IsNothing(MostRecentServiceAVS(Policy_Level_Program__, client, VLLFS2Navs_date, VLLFSBNavs_date, VLLFSNavs_date, avs_date)) Then
             Return 0
         Else
             Dim CurrentDate As Date
             CurrentDate = Today()
-            Return DateDiff("d", MostRecentServiceAVS(program, client, VLLFS2Navs_date, VLLFSBNavs_date, VLLFSNavs_date, avs_date), CurrentDate) / 30.42
+            Return DateDiff("d", MostRecentServiceAVS(Policy_Level_Program__, client, VLLFS2Navs_date, VLLFSBNavs_date, VLLFSNavs_date, avs_date), CurrentDate) / 30.42
         End If
     End Function
 
-    Function MostRecentServiceAVSLE(ByVal program As String, ByVal client As String, ByVal VLLFS2Navs_le As Nullable(Of Double), ByVal VLLFSBNavs_le As Nullable(Of Double), ByVal VLLFSNavs_le As Nullable(Of Double), ByVal avs_le As Nullable(Of Double))
-        If program = "59" Then
+    Function MostRecentServiceAVSLE(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Navs_le As Nullable(Of Double), ByVal VLLFSBNavs_le As Nullable(Of Double), ByVal VLLFSNavs_le As Nullable(Of Double), ByVal avs_le As Nullable(Of Double))
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNavs_le
         ElseIf client = "Monarch 1" Then
             Return avs_le
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Navs_le
         Else
             Return VLLFSNavs_le
         End If
     End Function
 
-    Function MostRecentServiceAVSMortality(ByVal program As String, ByVal client As String, ByVal VLLFS2Navs_multiplier As Nullable(Of Double), ByVal VLLFSBNavs_multiplier As Nullable(Of Double), ByVal VLLFSNavs_multiplier As Nullable(Of Double), ByVal avs_multiplier As Nullable(Of Double))
-        If program = "59" Then
+    Function MostRecentServiceAVSMortality(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Navs_multiplier As Nullable(Of Double), ByVal VLLFSBNavs_multiplier As Nullable(Of Double), ByVal VLLFSNavs_multiplier As Nullable(Of Double), ByVal avs_multiplier As Nullable(Of Double))
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNavs_multiplier
         ElseIf client = "Monarch 1" Then
             Return avs_multiplier
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Navs_multiplier
         Else
             Return VLLFSNavs_multiplier
         End If
     End Function
 
-    Function MostRecentServiceEMSIAge(ByVal program As String, ByVal client As String, ByVal VLLFS2Nemsi_date As Nullable(Of Date), ByVal VLLFSBNemsi_date As Nullable(Of Date), ByVal VLLFSNemsi_date As Nullable(Of Date), ByVal emsi_date As Nullable(Of Date))
-        If IsNothing(MostRecentServiceEMSI(program, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date)) Then
+    Function MostRecentServiceEMSIAge(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Nemsi_date As Nullable(Of Date), ByVal VLLFSBNemsi_date As Nullable(Of Date), ByVal VLLFSNemsi_date As Nullable(Of Date), ByVal emsi_date As Nullable(Of Date))
+        If IsNothing(MostRecentServiceEMSI(Policy_Level_Program__, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date)) Then
             Return 0
         Else
             Dim CurrentDate As Date
             CurrentDate = Today()
-            Return DateDiff("d", MostRecentServiceEMSI(program, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date), CurrentDate) / 30.42
+            Return DateDiff("d", MostRecentServiceEMSI(Policy_Level_Program__, client, VLLFS2Nemsi_date, VLLFSBNemsi_date, VLLFSNemsi_date, emsi_date), CurrentDate) / 30.42
         End If
     End Function
 
-    Function MostRecentServiceEMSILE(ByVal program As String, ByVal client As String, ByVal VLLFS2Nemsi_le As Nullable(Of Double), ByVal VLLFSBNemsi_le As Nullable(Of Double), ByVal VLLFSNemsi_le As Nullable(Of Double), ByVal emsi_le As Nullable(Of Double))
-        If program = "59" Then
+    Function MostRecentServiceEMSILE(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Nemsi_le As Nullable(Of Double), ByVal VLLFSBNemsi_le As Nullable(Of Double), ByVal VLLFSNemsi_le As Nullable(Of Double), ByVal emsi_le As Nullable(Of Double))
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNemsi_le
         ElseIf client = "Monarch 1" Then
             Return emsi_le
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Nemsi_le
         Else
             Return VLLFSNemsi_le
         End If
     End Function
 
-    Function MostRecentServiceEMSIMortality(ByVal program As String, ByVal client As String, ByVal VLLFS2Nemsi_multiplier As Nullable(Of Double), ByVal VLLFSBNemsi_multiplier As Nullable(Of Double), ByVal VLLFSNemsi_multiplier As Nullable(Of Double), ByVal emsi_multiplier As Nullable(Of Double))
-        If program = "59" Then
+    Function MostRecentServiceEMSIMortality(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Nemsi_multiplier As Nullable(Of Double), ByVal VLLFSBNemsi_multiplier As Nullable(Of Double), ByVal VLLFSNemsi_multiplier As Nullable(Of Double), ByVal emsi_multiplier As Nullable(Of Double))
+        If Policy_Level_Program__ = "59" Then
             Return VLLFSBNemsi_multiplier
         ElseIf client = "Monarch 1" Then
             Return emsi_multiplier
-        ElseIf IgnoreSyncToKBC(program) Then
+        ElseIf IgnoreSyncToKBC(Policy_Level_Program__) Then
             Return VLLFS2Nemsi_multiplier
         Else
             Return VLLFSNemsi_multiplier
