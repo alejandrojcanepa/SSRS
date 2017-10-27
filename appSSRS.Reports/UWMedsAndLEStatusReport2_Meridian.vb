@@ -133,13 +133,13 @@
         End If
     End Function
 
-    Function LastVisitDateAge(ByVal last_visit_date As Nullable(Of Date))
-        If IsNothing(last_visit_date) Then
+    Function LastVisitDateAge(ByVal Last_Visit_Date As Nullable(Of Date))
+        If IsNothing(Last_Visit_Date) Then
             Return 0
         Else
             Dim CurrentDate As Date
             CurrentDate = Today()
-            Return DateDiff("d", last_visit_date, CurrentDate) / 30.42
+            Return DateDiff("d", Last_Visit_Date, CurrentDate) / 30.42
         End If
     End Function
 
