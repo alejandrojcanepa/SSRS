@@ -67,6 +67,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NCB Premium Requirement Report - New.vb" />
     <Compile Include="Corry Capital Premium Requirements Report.vb" />
     <Compile Include="Policy Portfolio Insured Call Log Report - Copia.vb" />
     <Compile Include="Bac Insured Call.vb" />
