@@ -51,9 +51,8 @@
     End Function
 
     Function IgnoreSyncToKBC(ByVal Policy_Level_Program__ As String)
-        '-- request #3440. meridian Policy_Level_Program__s should use diff. logic (ignore the KBC sync checkbox)
-        Dim prom
 
+        Dim prom
         If IsNumeric(Policy_Level_Program__) Then
             prom = CDbl(Policy_Level_Program__)
 
@@ -160,7 +159,7 @@
     End Function
 
     Function LEDueDate(ByVal Policy_Level_Program__ As String, ByVal client As String, ByVal VLLFS2Navs_date As Nullable(Of Date), ByVal VLLFSBNavs_date As Nullable(Of Date), ByVal VLLFSNavs_date As Nullable(Of Date), ByVal avs_date As Nullable(Of Date), ByVal VLLFS2Ntf_date As Nullable(Of Date), ByVal VLLFSBNtf_date As Nullable(Of Date), ByVal VLLFSNtf_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date), ByVal VLLFS2Nemsi_date As Nullable(Of Date), ByVal VLLFSBNemsi_date As Nullable(Of Date), ByVal VLLFSNemsi_date As Nullable(Of Date), ByVal emsi_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
-        '-- earliest one among the 3 + 365
+
         Dim d
         d = CDate("1/1/2050")
 
@@ -229,8 +228,6 @@
 
         If Not IsNothing(Maturity_Date) Then
 
-            '-- determine the day
-            '-- determine the day
             Dim theDay
             Dim pad
             Dim ad
@@ -396,10 +393,6 @@
         ElseIf (lEndDay = 31) And (lStartDay >= 30) Then
             EndDate = DateValue(DateAdd("d", -1, EndDate))
         End If
-
-        'If IsLastDayInFebruary(StartDate) Then
-        '    FebruaryAdjustment = 30 - Day(StartDate)
-        'End If
 
         lStartDay = Day(StartDate)
         lEndDay = Day(EndDate)

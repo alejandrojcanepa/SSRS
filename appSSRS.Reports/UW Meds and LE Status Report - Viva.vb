@@ -97,7 +97,6 @@
     End Function
 
     Function LETargetDate(ByVal program As String, ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
-        '-- request #8691 and #8735
         If program = "112" Then
 
             Dim theDay As Integer
