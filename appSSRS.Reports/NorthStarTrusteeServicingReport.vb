@@ -1,7 +1,7 @@
 ﻿Public Class NorthStarTrusteeServicingReport
     Inherits BaseReport
 
-    Function GroupLabel(ByVal date_of_death As Nullable(Of Date), ByVal client As String, ByVal payoff_date_service As Nullable(Of Date), ByVal program As String, ByVal VPCProvider As String, ByVal coll_rel_agrmnt_date As Nullable(Of Date), ByVal confirmed_lapse_date As Nullable(Of Date), ByVal ltr_22_month_response As String, ByVal owner As String, ByVal policies_status As String, ByVal kbc_decision As String, ByVal view_policy_lonsdale_status_latest_status As String, ByVal strike_price_paid As String, ByVal original_strike_price_check As String, ByVal adj_strike_price_check As String, ByVal note_purchaser As String, ByVal endorsee As String, ByVal purchaser As String, ByVal VBPOAProvider As String) As String
+    Function GroupLabel(ByVal date_of_death As Nullable(Of Date), ByVal client As String, ByVal payoff_date_service As Nullable(Of Date), ByVal program As String, ByVal VPCProvider As String, ByVal coll_rel_agrmnt_date As Nullable(Of Date), ByVal confirmed_lapse_date As Nullable(Of Date), ByVal ltr_22_month_response As String, ByVal owner As String, ByVal policies_status As String, ByVal kbc_decision As String, ByVal VPLSLStatus As String, ByVal strike_price_paid As String, ByVal original_strike_price_check As String, ByVal adj_strike_price_check As String, ByVal note_purchaser As String, ByVal endorsee As String, ByVal purchaser As String, ByVal VBPOAProvider As String) As String
         If Not (IsNothing(date_of_death)) Then
             Return 100
         ElseIf client = "Hyperion Fund" Then
@@ -68,7 +68,7 @@
             Return 97
         ElseIf kbc_decision = "Distressed/Surrender" Then
             Return 96
-        ElseIf InStr(ltr_22_month_response, "Cash", 0) > 0 Or InStr(view_policy_lonsdale_status_latest_status, "Cash", 0) > 0 Or (Not IsNothing(payoff_date_service) AndAlso (CStr(payoff_date_service)) <> "") Then
+        ElseIf InStr(ltr_22_month_response, "Cash", 0) > 0 Or InStr(VPLSLStatus, "Cash", 0) > 0 Or (Not IsNothing(payoff_date_service) AndAlso (CStr(payoff_date_service)) <> "") Then
             Return 130
         ElseIf program = "53" Then
             Return 5
@@ -94,86 +94,86 @@
     End Function
 
 
-    Function GroupBy(ByVal program As String, ByVal strike_price_paid As String, ByVal adj_strike_price_check As String, ByVal date_of_death As Nullable(Of Date), ByVal client As String, ByVal payoff_date_service As Nullable(Of Date), ByVal VPCProvider As String, ByVal coll_rel_agrmnt_date As Nullable(Of Date), ByVal confirmed_lapse_date As Nullable(Of Date), ByVal ltr_22_month_response As String, ByVal owner As String, ByVal policies_status As String, ByVal kbc_decision As String, ByVal view_policy_lonsdale_status_latest_status As String, ByVal original_strike_price_check As String, ByVal note_purchaser As String, ByVal endorsee As String, ByVal purchaser As String, ByVal VBPOAProvider As String) As String
-        If GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 100 Then
+    Function GroupBy(ByVal program As String, ByVal strike_price_paid As String, ByVal adj_strike_price_check As String, ByVal date_of_death As Nullable(Of Date), ByVal client As String, ByVal payoff_date_service As Nullable(Of Date), ByVal VPCProvider As String, ByVal coll_rel_agrmnt_date As Nullable(Of Date), ByVal confirmed_lapse_date As Nullable(Of Date), ByVal ltr_22_month_response As String, ByVal owner As String, ByVal policies_status As String, ByVal kbc_decision As String, ByVal VPLSLStatus As String, ByVal original_strike_price_check As String, ByVal note_purchaser As String, ByVal endorsee As String, ByVal purchaser As String, ByVal VBPOAProvider As String) As String
+        If GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 100 Then
             Return "Deceased"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.9 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.9 Then
             Return "Hyperion"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.905 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.905 Then
             Return "Blackstone Service"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.91 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.91 Then
             Return "Monarch 1 Service"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.92 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.92 Then
             Return "Hyperion II"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.93 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.93 Then
             Return "M2 to Del Mar"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.94 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.94 Then
             Return "Del Mar to PCH"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.95 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.95 Then
             Return "Monarch 2"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.955 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.955 Then
             Return "Monarch Misc"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.96 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.96 Then
             Return "J-Curve Loan Centurion"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.97 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.97 Then
             Return "J-Curve Centurion Private"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.975 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.975 Then
             Return "J-Curve Loan Centurion NCK"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.976 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.976 Then
             Return "J-Curve Service Centurion NCK"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.98 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.98 Then
             Return "J-Curve Loan AGI"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.985 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.985 Then
             Return "J-Curve Loan GISF"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.986 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.986 Then
             Return "J-Curve Loan Secure Capital"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.987 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.987 Then
             Return "J-Curve Loan MISC"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.988 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.988 Then
             Return "J-Curve Loan Surety"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.989 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.989 Then
             Return "J-Curve Loan Edgewater"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.9891 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.9891 Then
             Return "J-Curve Service MCI"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.9892 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.9892 Then
             Return "Corry Capital Advisers"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.98925 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.98925 Then
             Return "Cromwell"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.98926 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.98926 Then
             Return "LSS - JMD"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.98927 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.98927 Then
             Return "ALS Capital Ventures"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.9893 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.9893 Then
             Return "Europa EFG"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.99 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.99 Then
             Return "NLSS (Back-Up Service)"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 200 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 200 Then
             Return "Note Payoff"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 99 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 99 Then
             Return "Confirmed Lapse"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 4.5 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 4.5 Then
             Return "EFG Sold"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 4.4 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 4.4 Then
             Return "Fortress Additional PHL"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 98 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 98 Then
             Return "Sold Notes"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 97 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 97 Then
             Return "Sold Policies"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 96 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 96 Then
             Return "Distressed/Surrendered"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 130 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 130 Then
             Return "Cash Payoff"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 120 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 120 Then
             Return "Transaction Rescinded"
         ElseIf program = "53" Then
             Return "Lux Co Del Mar"
         ElseIf program = "57" Then
             Return "Lux Co Sonoma"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.6 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.6 Then
             Return "MCC to Lux Co"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.8 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 5.8 Then
             Return "Companion"
-        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, view_policy_lonsdale_status_latest_status, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 6 Then
+        ElseIf GroupLabel(date_of_death, client, payoff_date_service, program, VPCProvider, coll_rel_agrmnt_date, confirmed_lapse_date, ltr_22_month_response, owner, policies_status, kbc_decision, VPLSLStatus, strike_price_paid, original_strike_price_check, adj_strike_price_check, note_purchaser, endorsee, purchaser, VBPOAProvider) = 6 Then
             Return "Transaction Rescinded"
         ElseIf VPCProvider <> "Oceanus" And VPCProvider <> "Seaboard" Then
             Return "Other"
@@ -263,11 +263,11 @@
         Return str
     End Function
 
-    Function PolicyValuesAge(ByVal view_policy_value_stmt_req_latest_voc_most_recent_received As Nullable(Of Date)) As String
-        If Not IsNothing(view_policy_value_stmt_req_latest_voc_most_recent_received) Then
+    Function PolicyValuesAge(ByVal VPVSRLPVMost_recent_received As Nullable(Of Date)) As String
+        If Not IsNothing(VPVSRLPVMost_recent_received) Then
             Dim CurrentDate As Date
             CurrentDate = Today()
-            Return CStr(DateDiff("d", view_policy_value_stmt_req_latest_voc_most_recent_received, CurrentDate) / 30.42)
+            Return CStr(DateDiff("d", VPVSRLPVMost_recent_received, CurrentDate) / 30.42)
         End If
     End Function
 
@@ -279,15 +279,15 @@
         End If
     End Function
 
-    Function MinPayIllustrationRequestOpen(ByVal view_illustration_latest_select_scenarios_illustration_run_date As Nullable(Of Date), ByVal date_request_sent_to_carrier As Nullable(Of Date)) As Date
-        If IsNothing(view_illustration_latest_select_scenarios_illustration_run_date) And Not IsNothing(date_request_sent_to_carrier) Then
-            Return date_request_sent_to_carrier
+    Function MinPayIllustrationRequestOpen(ByVal VILSSIllustration_run_date As Nullable(Of Date), ByVal VILSSDate_request_sent_to_carrier As Nullable(Of Date)) As Date
+        If IsNothing(VILSSIllustration_run_date) And Not IsNothing(VILSSDate_request_sent_to_carrier) Then
+            Return VILSSDate_request_sent_to_carrier
         End If
     End Function
 
-    Function RateIncrease(ByVal viewlatest_rate_increase_notification_correspondence_type As String, ByVal viewlatest_rate_increase_notification_rate_increase As String) As String
-        If Not IsNothing(viewlatest_rate_increase_notification_correspondence_type) Then
-            If viewlatest_rate_increase_notification_rate_increase = "Y" Then
+    Function RateIncrease(ByVal VLRCNCorrespondence_type As String, ByVal VRINRate_increase As String) As String
+        If Not IsNothing(VLRCNCorrespondence_type) Then
+            If VRINRate_increase = "Y" Then
                 Return "Yes"
             Else
                 Return "No"
@@ -304,10 +304,5 @@
             Return ssn
         End If
     End Function
-
-
-    Protected Overrides Sub Finalize()
-        MyBase.Finalize()
-    End Sub
 
 End Class

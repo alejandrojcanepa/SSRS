@@ -1,5 +1,23 @@
 ﻿Public Class NCB_Premium_Requirement_Report_New
 
+    Function GroupBy(ByVal date_of_death As Nullable(Of Date), ByVal endreason As String) As String
+        If Not IsNothing(date_of_death) Then
+            Return "Z_Deceased"
+        ElseIf endreason = "" Then
+            Return "Active"
+        Else
+            Return endreason
+        End If
+    End Function
+
+    Function GoupLabel(ByVal date_of_death As Nullable(Of Date), ByVal endreason As String) As String
+        If InStr(GroupBy(date_of_death, endreason), "_") = 2 Then
+            Return Mid(GroupBy(date_of_death, endreason), 3)
+        Else
+            Return GroupBy(date_of_death, endreason)
+        End If
+    End Function
+
     Function ROP(ByVal PRNROP As String) As String
         If PRNROP = "T" Then
             Return "Yes"

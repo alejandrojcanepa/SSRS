@@ -1,4 +1,5 @@
 ﻿Public Class BaseReport
+
     Function _End(ByVal note_purchaser As String, ByVal endorsee As String) As String
         If IsNothing(note_purchaser) Or note_purchaser = "" Then
             Return endorsee
