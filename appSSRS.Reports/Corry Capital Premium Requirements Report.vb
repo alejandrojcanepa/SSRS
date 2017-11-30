@@ -75,7 +75,7 @@
 
     End Function
 
-    Function Override_Premium_calc(ByVal override_premium As Decimal) As String
+    Function Override_Premium_func(ByVal override_premium As Decimal) As String
         If Not IsNothing(override_premium) Then
             Return "Y"
         Else

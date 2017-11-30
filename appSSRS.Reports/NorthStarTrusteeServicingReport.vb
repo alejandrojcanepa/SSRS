@@ -209,7 +209,7 @@
         End If
     End Function
 
-    Function ROP_calc(ByVal rop As String) As String
+    Function ROP_func(ByVal rop As String) As String
         If rop = "T" Then
             Return "Yes"
         Else

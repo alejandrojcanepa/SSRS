@@ -154,7 +154,7 @@
         End If
     End Function
 
-    Function AVSRolled_calc(ByVal avs_rolled As String)
+    Function AVSRolled_func(ByVal avs_rolled As String)
         If avs_rolled = "T" Then
             Return "Yes"
         Else
