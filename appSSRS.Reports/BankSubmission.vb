@@ -126,7 +126,7 @@
         '        r = "Y"
         '    end if
         'end if
-        'formula = r
+        'Return r
     End Function
 
     Function LE_Discrepancy_Str(ByVal le1 As Double, ByVal le2 As Double) As String

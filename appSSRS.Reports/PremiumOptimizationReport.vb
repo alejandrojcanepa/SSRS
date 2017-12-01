@@ -1,6 +1,7 @@
-﻿Public Class Corry_Capital_Premium_Requirements_Report
+﻿Public Class PremiumOptimizationReport
+    Inherits BaseReport
 
-    Function GroupBy(ByVal date_of_death As Nullable(Of Date), ByVal VPCProgram As String) As String
+    Function GroupBy(ByVal date_of_death As Nullable(Of Date), VPCProgram As String) As String
         If Not IsNothing(date_of_death) Then
             Return "Z_Deceased"
         Else
@@ -8,16 +9,27 @@
         End If
     End Function
 
-    Function GroupLabel(ByVal date_of_death As Nullable(Of Date), ByVal VPCProgram As String, ByVal program_name As String) As String
-        If InStr(GroupBy(date_of_death, VPCProgram), "-") = 2 Then
+    Function GroupLabel(ByVal date_of_death As Nullable(Of Date), VPCProgram As String, ByVal program_name As String) As String
+        If InStr(GroupBy(date_of_death, VPCProgram), "_") = 2 Then
             Return Mid(GroupBy(date_of_death, VPCProgram), 3)
         Else
             Return program_name
         End If
     End Function
 
-    Function ROP(ByVal PRNROP As String) As String
-        If PRNROP = "T" Then
+    Function CurrentDeathBenefit(ByVal rop As String, ByVal total_death_benefit As String, ByVal db_change As String, ByVal deathbenefit As String, ByVal partial_surrender_amount As String) As String
+        If rop = "T" Then
+            Return total_death_benefit
+
+        ElseIf db_change <> "" Then
+            Return deathbenefit + partial_surrender_amount
+        Else
+            Return deathbenefit
+        End If
+    End Function
+
+    Function ROP_func(ByVal rop As String) As String
+        If rop = "T" Then
             Return "Yes"
         Else
             Return "No"
@@ -79,6 +91,16 @@
             Return "Y"
         Else
             Return "N"
+        End If
+    End Function
+
+    Function RateIncrease(ByVal rate_increase As String) As String
+        If rate_increase = "Y" Then
+            Return "Yes"
+        ElseIf rate_increase = "" Then
+            Return ""
+        Else
+            Return "No"
         End If
     End Function
 
