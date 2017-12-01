@@ -263,6 +263,14 @@
         Return str
     End Function
 
+    Function Annual_Stmt_Age(ByVal annualstatementdate As Nullable(Of Date)) As String
+        If Not IsNothing(annualstatementdate) Then
+            Dim CurrentDate As Date
+            CurrentDate = Today()
+            Return CStr(DateDiff("d", annualstatementdate, CurrentDate) / 30.42)
+        End If
+    End Function
+
     Function PolicyValuesAge(ByVal VPVSRLPVMost_recent_received As Nullable(Of Date)) As String
         If Not IsNothing(VPVSRLPVMost_recent_received) Then
             Dim CurrentDate As Date
