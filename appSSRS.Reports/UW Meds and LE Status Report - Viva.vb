@@ -29,34 +29,7 @@
         Return FormatNumber(((lMonths * 30) + (lEndDay - lStartDay) - FebruaryAdjustment) / 30, 1)
     End Function
 
-    Function Nextdob(ByVal dob As Nullable(Of Date))
-        If Not (IsNothing(dob)) Then
-
-            Dim dobdate As Date
-            dobdate = DateAdd("yyyy", Year(Today()) - Year(dob), dob)
-
-            If DateDiff("d", Today(), dobdate) < 0 Then dobdate = DateAdd("yyyy", 1, dobdate)
-            Return dobdate
-        End If
-    End Function
-
-    'duplicated on AVSNextAgeChange
-    Function AVSAgeChange(ByVal dob As Nullable(Of Date))
-        If Not (IsNothing(dob)) Then
-            Return DateAdd("m", -3, Nextdob(dob))
-        End If
-    End Function
-
-    Function OptimizedMedicalRecordsDueDate(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
-        If IsNothing(date_of_death) And Not (IsNothing(dob)) Then
-            Return DateAdd("d", -1, AVSAgeChange(dob))
-        Else
-            Return nulldateforcrystal
-        End If
-    End Function
-
     Function AnnualizedLEDueDate(ByVal avs_date As Nullable(Of Date), ByVal tf_date As Nullable(Of Date), ByVal fasano_date As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
-
         Dim ALEDDdate As Date
         ALEDDdate = CDate("1/1/2050")
 
@@ -77,6 +50,14 @@
             Return nulldateforcrystal
         Else
             Return DateAdd("d", 365, ALEDDdate)
+        End If
+    End Function
+
+    Function OptimizedMedicalRecordsDueDate(ByVal date_of_death As Nullable(Of Date), ByVal dob As Nullable(Of Date), ByVal nulldateforcrystal As Nullable(Of Date))
+        If IsNothing(date_of_death) And Not (IsNothing(dob)) Then
+            Return DateAdd("d", -1, AVSAgeChange(dob))
+        Else
+            Return nulldateforcrystal
         End If
     End Function
 
@@ -140,10 +121,6 @@
         End If
     End Function
 
-    Function MostRecentServiceAVS(ByVal avs_date As Nullable(Of Date))
-        MostRecentServiceAVS = avs_date
-    End Function
-
     Function MostRecentServiceAVSAge(ByVal avs_date As Nullable(Of Date))
         If IsNothing(MostRecentServiceAVS(avs_date)) Then
             Return 0
@@ -162,13 +139,8 @@
         End If
     End Function
 
-    'duplicated on AVSAgeChange
     Function AVSNextAgeChange(ByVal dob As Nullable(Of Date))
         AVSNextAgeChange = AVSAgeChange(dob)
-    End Function
-
-    Function MostRecentService21st(ByVal tf_date As Date) As Date
-        MostRecentService21st = tf_date
     End Function
 
     Function MostRecentService21stAge(ByVal tf_date As Date)
@@ -279,6 +251,32 @@
         Else
             Return nulldateforcrystal
         End If
+    End Function
+
+    'TO-DO: review and refactor if needed
+    Function Nextdob(ByVal dob As Nullable(Of Date))
+        If Not (IsNothing(dob)) Then
+
+            Dim dobdate As Date
+            dobdate = DateAdd("yyyy", Year(Today()) - Year(dob), dob)
+
+            If DateDiff("d", Today(), dobdate) < 0 Then dobdate = DateAdd("yyyy", 1, dobdate)
+            Return dobdate
+        End If
+    End Function
+
+    Function AVSAgeChange(ByVal dob As Nullable(Of Date))
+        If Not (IsNothing(dob)) Then
+            Return DateAdd("m", -3, Nextdob(dob))
+        End If
+    End Function
+
+    Function MostRecentServiceAVS(ByVal avs_date As Nullable(Of Date))
+        MostRecentServiceAVS = avs_date
+    End Function
+
+    Function MostRecentService21st(ByVal tf_date As Date) As Date
+        MostRecentService21st = tf_date
     End Function
 
 End Class
