@@ -279,7 +279,7 @@
         End If
     End Function
 
-    Function IllustrationRe_request(ByVal rerequest_check As String) As String
+    Function IllustrationReRequest(ByVal rerequest_check As String) As String
         If rerequest_check = "T" Then
             Return "Yes"
         Else
