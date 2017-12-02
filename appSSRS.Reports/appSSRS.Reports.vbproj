@@ -67,6 +67,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VIVAPremiumRequirementsReport.vb" />
+    <Compile Include="VivaWilmingtonWiringInstructionReport.vb" />
+    <Compile Include="VivaWellsFargoWiringInstructionReport.vb" />
     <Compile Include="PremiumOptimizationReport.vb" />
     <Compile Include="NCB Premium Requirement Report - New.vb" />
     <Compile Include="Corry Capital Premium Requirements Report.vb" />
