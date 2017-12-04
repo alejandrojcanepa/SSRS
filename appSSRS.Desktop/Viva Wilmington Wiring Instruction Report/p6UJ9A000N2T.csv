@@ -1,0 +1,61 @@
+DATE_ADDL_PREM_DUE,Client,BANK_ACCOUNT_NUM,FULL_CARRIER_NAME,Bank_ABA,INSURANCECOMPANY,name,POLICYNUMBER,OVERRIDE_PREMIUM,ADJ_EST_PREM,Bank,Bank_City,Bank_State,NEW_OWNER_NAME
+00:00.0,Viva (Blackstone),9102713816,PHL Variable Insurance Company,21000021,Phoenix,"Prescott, Mary M.",97515674,10000,9900,JP Morgan Chase,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),9102633030,PHL Variable Insurance Company,21000021,Phoenix,"Issacharoff, Amnon",97303945,9900,9900,JP Morgan Chase,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.6,Viva (Blackstone),9102713816,PHL Variable Insurance Company,21000021,Phoenix,"Prescott, Mary M.",97515870,NULL,10000,JP Morgan Chase,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:01.0,Viva (Blackstone),1954173579,Principal Life Insurance Company,121000248,Principal,"Shaffer, William",6092204,NULL,3500,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.7,Viva (Blackstone),1954173579,Principal Life Insurance Company,121000248,Principal,"Harris, Mel",6089874,NULL,22200,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.3,Viva (Blackstone),9102713816,PHL Variable Insurance Company,21000021,Phoenix,"Schorr, David J.",97524332,46100,46100,JP Morgan Chase,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.9,Viva (Blackstone),1954173579,Principal Life Insurance Company,121000248,Principal,"Bezonsky, Sydney",6094783,NULL,11400,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),1954173579,Principal Life Insurance Company,121000248,Principal,"Abramian, Raisa",6095237,11400,11400,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),9402857788,Lincoln National Life Ins Co,26009593,Lincoln,"Alson, Lillian",7314616,16000,16000,Bank of America,New York,NY,Wilmington Trust N.A.
+00:00.0,Viva (Blackstone),169498,Transamerica Life Ins Co,21001088,Trans,"Darmanyan, Feyga",65089096,52800,52800,HSBC Bank,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.6,Viva (Blackstone),9402857788,Lincoln National Life Ins Co,26009593,Lincoln,"Bowers, Jane Lawson",JJ7009258,NULL,48900,Bank of America,New York,NY,Wilmington Trust N.A.
+00:00.0,Viva (Blackstone),8900488921,New York Life Ins & Annuity Corp,21000018,NYL,"Sheneman, Phyllis J",56735690,29200,29200,Bank of New York,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750011427,Lincoln National Life Ins Co,26009593,JP,"Berney, Nathan G.",JP5584937,204400,204400,Bank of America,New York,NY,Wilmington Trust N.A.
+00:00.0,Viva (Blackstone),9402857788,Lincoln National Life Ins Co,26009593,Lincoln,"Bonner, Eleanor",JJ7035072,10300,10300,Bank of America,New York,NY,Wilmington Trust N.A.
+00:00.0,Viva (Blackstone),9857551601,Security Mutual Life Ins Co of NY,22000046,Security Mutual,"Erani, Esther",1311116,27800,27800,M & T Bank,Buffalo,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Sciarra, Stella L",157215249,10200,10200,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),53417886,John Hancock Variable Life Ins Co,26009593,Hancock,"Mastro, Michael R.",1200302,35600,35600,Bank of America,Boston,MA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Pinter, Hinde",157200135,33600,33600,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),4121486161,Pacific Life Insurance Company,121000248,PacLife,"Segal, Murray",VF51691980,31400,31400,"Wells Fargo Bank, N.A.",San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),40678502,John Hancock Variable Life Ins Co,21000089,Hancock,"Rittmueller, Wilbert E",93898039,35500,35500,Citibank,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Werther, Bernard",157215766,44600,44600,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.9,Viva (Blackstone),9402857788,Lincoln National Life Ins Co,26009593,Lincoln,"Waechter, Roenah",JJ7009543,16400,16400,Bank of America,New York,NY,Wilmington Trust N.A.
+00:00.0,Viva (Blackstone),52416983,Sun Life Assurance Co of Canada,26009593,Sun Life,"Talansky, Morris",20147666,24100,24100,Bank of America,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750011427,Lincoln National Life Ins Co,26009593,JP,"Spencer, Norman E",JP5584303,7800,7800,Bank of America,New York,NY,Wilmington Trust N.A.
+00:00.0,Viva (Blackstone),3751583255,Lincoln National Life,26009593,Lincoln,"Freilich, Robert",LJ7015001,29900,29900,Bank of America,New York,NY,Wilmington Trust N.A.
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Blau, Abraham A.",157203099,57900,57900,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Oberlander, Herman",156226638,141800,141800,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Silberstein, Armin",155201153,12100,12100,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),4121486161,Pacific Life Insurance Company,121000248,PacLife,"Loeb, Jr., John L.",VF51406210,58200,58200,"Wells Fargo Bank, N.A.",San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),4121486161,Pacific Life Insurance Company,121000248,PacLife,"Zevallos, Hector",VF51706190,36300,36300,"Wells Fargo Bank, N.A.",San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),8900449438,American General Life Ins Co,21000018,AG,"Schein, Ellen R.",UME196501L,7800,7800,Bank of New York,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),6355053221,ReliaStar Life Insurance Company,121000248,ReliaStar NY,"Chute, Dolores",2052302X,11300,11300,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.6,Viva (Blackstone),3750011427,Lincoln National Life Ins Co,26009593,JP,"Grossman, Joan H.",LF5552771,NULL,16900,Bank of America,New York,NY,Wilmington Trust N.A.
+00:00.0,Viva (Blackstone),6355053221,ReliaStar Life Insurance Company,121000248,ReliaStar NY,"Lowenstein, Toba R.",2051772X,6000,6000,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),6355053221,ReliaStar Life Insurance Company,121000248,ReliaStar NY,"Sato, Akira",2054800R,113800,113800,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),4640454672,Delaware Life Ins. Co. of NY UL,26009593,Sun Life US,"Millstein, Gerald",40002272,23800,23800,"Bank of America, N.A., NY",New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),53417886,John Hancock Variable Life Ins Co,26009593,Hancock,"Lesser, Benjamin",1203310,20500,20600,Bank of America,Boston,MA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),4121486161,Pacific Life Insurance Company,121000248,PacLife,"Hocherman, Morris Z.",VF51514520,18300,18300,"Wells Fargo Bank, N.A.",San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.2,Viva (Blackstone),1954173579,Principal Life Insurance Company,121000248,Principal,"Teplitz, Phyllis N.",6069222,NULL,14100,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),6355053221,ReliaStar Life Insurance Company,121000248,ReliaStar NY,"Scher, Stanley J.",2053153X,55000,74700,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),4121486161,Pacific Life Insurance Company,121000248,PacLife,"Hocherman, Morris Z.",VF51514510,18300,18300,"Wells Fargo Bank, N.A.",San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Kieserman, Elaine L.",157218627,5500,6500,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.7,Viva (Blackstone),4748667946,Lincoln Benefit Life Ins Co,121000248,LBL,"Feldman, William",01N1278399,NULL,30300,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),9402857788,Lincoln National Life Ins Co,26009593,Lincoln,"Habicht, Helmut",7311114,26900,26900,Bank of America,New York,NY,Wilmington Trust N.A.
+00:00.0,Viva (Blackstone),8900450061,US Life Ins Co in the City of NY,21000018,US Life,"Appel, Dora",U10023117Y,17600,22800,Bank of New York,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),6355053221,ReliaStar Life Insurance Company,121000248,ReliaStar NY,"Silverton, Barry",2054976H,35100,35100,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.5,Viva (Blackstone),169498,Transamerica Life Ins Co,21001088,Trans,"Cannella, Joseph M.",60138859,22400,22400,HSBC Bank,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),4311848816,American National Ins Co,121000248,American National,"Lucas, Julius",U0593287,113900,113900,Wells Fargo Bank,Los Angeles,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),9102633030,PHL Variable Insurance Company,21000021,Phoenix,"Levitt, Zelda",97304313,22600,22600,JP Morgan Chase,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),40678502,John Hancock Variable Life Ins Co,21000089,Hancock,"Shattuck, Catherine",94035276,40700,40700,Citibank,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.5,Viva (Blackstone),169498,Transamerica Life Ins Co,21001088,Trans,"Kornfeld, Myron",60139046,11500,11500,HSBC Bank,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Berliner, Jay",157214772,4500,4500,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Levy, John",156231796,27400,27400,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Locker, Edward",157225961,6400,6400,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Solomon, Edward",156217629,67200,67200,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),6355053221,ReliaStar Life Insurance Company,121000248,ReliaStar NY,"Silverton, Barry",2054975K,35100,35100,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),3750370197,AXA Equitable Life Ins Co,26009593,AXA,"Levy, John",156231804,27400,27400,Bank of America,Concord,CA,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),9102713816,PHL Variable Insurance Company,21000021,Phoenix,"Hocherman, Morris Z.",97518804,29600,29600,JP Morgan Chase,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),8900450061,US Life Ins Co in the City of NY,21000018,US Life,"Segal, Lilly",U10033625Y,14200,14200,Bank of New York,New York,NY,Wilmington Trust N.A. as Securities Intermediary
+00:00.0,Viva (Blackstone),4132697228,Security Life of Denver,121000248,SLD,"McLean, Jack S",1626679,100,200,Wells Fargo Bank,San Francisco,CA,Wilmington Trust N.A. as Securities Intermediary

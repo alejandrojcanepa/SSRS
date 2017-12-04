@@ -81,6 +81,33 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Corry Capital Premium Requirements Report\p6UJ9A000NHQ.csv" />
+    <None Include="Corry Capital Premium Requirements Report\p6uj9a000nhq.pdf" />
+    <None Include="Corry Capital Premium Requirements Report\p6uj9a000nhq.xls" />
+    <None Include="Death Tracking Report\Death Tracking Report %28A%29.csv" />
+    <None Include="Death Tracking Report\Death Tracking Report %28B%29.csv" />
+    <None Include="Death Tracking Report\Death Tracking Report.xlsx" />
+    <None Include="Designated Contacts\Designated Contacts %28A%29.csv" />
+    <None Include="Designated Contacts\Designated Contacts %28B%29.csv" />
+    <None Include="Designated Contacts\Designated Contacts.xlsx" />
+    <None Include="Misc Premium Requirements Report\p6uj9a000nib.csv" />
+    <None Include="Misc Premium Requirements Report\p6uj9a000nib.pdf" />
+    <None Include="Misc Premium Requirements Report\p6uj9a000nib.xls" />
+    <None Include="Misc Wire Instruction Report\p6uj9a000nic.csv" />
+    <None Include="Misc Wire Instruction Report\p6uj9a000nic.pdf" />
+    <None Include="Misc Wire Instruction Report\p6uj9a000nic.xls" />
+    <None Include="NCB Premium Requirement Report - New\p6uj9a000n8x.csv" />
+    <None Include="NCB Premium Requirement Report - New\p6uj9a000n8x.pdf" />
+    <None Include="NCB Premium Requirement Report - New\p6uj9a000n8x.xls" />
+    <None Include="NCB Wells Fargo Wire Instructions - New\p6uj9a000n8w.csv" />
+    <None Include="NCB Wells Fargo Wire Instructions - New\p6uj9a000n8w.pdf" />
+    <None Include="NCB Wells Fargo Wire Instructions - New\p6uj9a000n8w.xls" />
+    <None Include="NorthStar Trustee Servicing Report\p6UJ9A000L1O.csv" />
+    <None Include="NorthStar Trustee Servicing Report\p6uj9a000l1o.pdf" />
+    <None Include="NorthStar Trustee Servicing Report\p6uj9a000l1o.xls" />
+    <None Include="Premium Optimization Report\p6uj9a000ngp.csv" />
+    <None Include="Premium Optimization Report\p6uj9a000ngp.pdf" />
+    <None Include="Premium Optimization Report\p6uj9a000ngp.xls" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,6 +117,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Third Party Authorization Report\p6UJ9A000L1S.csv" />
+    <None Include="Third Party Authorization Report\p6uj9a000l1s.pdf" />
+    <None Include="Third Party Authorization Report\p6uj9a000l1s.xls" />
+    <None Include="UW Meds and LE Status Report - Viva\p6uj9a000n6q.csv" />
+    <None Include="UW Meds and LE Status Report - Viva\p6uj9a000n6q.pdf" />
+    <None Include="UW Meds and LE Status Report - Viva\p6uj9a000n6q.xls" />
+    <None Include="UW Meds and LE Status Report 2 - Meridian\p6uj9a000n6e.csv" />
+    <None Include="UW Meds and LE Status Report 2 - Meridian\p6uj9a000n6e.pdf" />
+    <None Include="UW Meds and LE Status Report 2 - Meridian\p6uj9a000n6e.xls" />
+    <None Include="VIVA Premium Requirements Report\p6uj9a000n99.csv" />
+    <None Include="VIVA Premium Requirements Report\p6uj9a000n99.pdf" />
+    <None Include="VIVA Premium Requirements Report\p6uj9a000n99.xls" />
+    <None Include="Viva Wells Fargo Wiring Instruction Report\p6UJ9A000N94.csv" />
+    <None Include="Viva Wells Fargo Wiring Instruction Report\p6uj9a000n94.pdf" />
+    <None Include="Viva Wells Fargo Wiring Instruction Report\p6uj9a000n94.xls" />
+    <None Include="Viva Wilmington Wiring Instruction Report\p6UJ9A000N2T.csv" />
+    <None Include="Viva Wilmington Wiring Instruction Report\p6uj9a000n2t.pdf" />
+    <None Include="Viva Wilmington Wiring Instruction Report\p6uj9a000n2t.xls" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -101,9 +146,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SQL\UW Meds and LE Status Report - Viva - p6uj9a000n6q.sql" />
-    <Content Include="SQL\Third Party Authorization Report - p6uj9a000l1s.sql" />
-    <Content Include="SQL\NorthStar Trustee Servicing Report - p6uj9a000l1o.sql" />
+    <Content Include="Corry Capital Premium Requirements Report\p6UJ9A000NHQ.sql" />
+    <Content Include="Death Tracking Report\Death Tracking Report %28A%29.sql" />
+    <Content Include="Death Tracking Report\Death Tracking Report %28B%29.sql" />
+    <Content Include="Designated Contacts\Designated Contacts %28A%29.sql" />
+    <Content Include="Designated Contacts\Designated Contacts %28B%29.sql" />
+    <Content Include="Misc Premium Requirements Report\p6uj9a000nib.sql" />
+    <Content Include="Misc Wire Instruction Report\p6UJ9A000NIC.sql" />
+    <Content Include="NCB Premium Requirement Report - New\p6uj9a000n8x.sql" />
+    <Content Include="NCB Wells Fargo Wire Instructions - New\p6uj9a000n8w.sql" />
+    <Content Include="NorthStar Trustee Servicing Report\p6uj9a000l1o.sql" />
+    <Content Include="Premium Optimization Report\p6UJ9A000NGP.sql" />
+    <Content Include="Third Party Authorization Report\p6uj9a000l1s.sql" />
+    <Content Include="UW Meds and LE Status Report - Viva\p6uj9a000n6q.sql" />
+    <Content Include="UW Meds and LE Status Report 2 - Meridian\p6uj9a000n6e.sql" />
+    <Content Include="VIVA Premium Requirements Report\p6uj9a000n99.sql" />
+    <Content Include="Viva Wells Fargo Wiring Instruction Report\p6UJ9A000N94.sql" />
+    <Content Include="Viva Wilmington Wiring Instruction Report\p6UJ9A000N2T.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -117,5 +176,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
