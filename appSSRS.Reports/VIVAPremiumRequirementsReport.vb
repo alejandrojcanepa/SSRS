@@ -1,6 +1,16 @@
 ﻿Public Class VIVAPremiumRequirementsReport
 
-
+    Function GroupBy(ByVal date_of_death As Nullable(Of Date), ByVal confirmed_lapse_date As Nullable(Of Date), ByVal endreason As Nullable(Of Date))
+        If Not IsNothing(date_of_death) Then
+            Return 80
+        ElseIf Not IsNothing(confirmed_lapse_date) Then
+            Return 100
+        ElseIf endreason <> "" Then
+            Return 21
+        Else
+            Return 24
+        End If
+    End Function
 
     Function ROP(ByVal PRNROP As String)
         If PRNROP = "T" Then
