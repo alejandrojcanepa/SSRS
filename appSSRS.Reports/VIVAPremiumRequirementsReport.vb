@@ -1,6 +1,8 @@
 ﻿Public Class VIVAPremiumRequirementsReport
 
-    Function ROP(ByVal PRNROP As String) As String
+
+
+    Function ROP(ByVal PRNROP As String)
         If PRNROP = "T" Then
             Return "Yes"
         Else
@@ -8,7 +10,7 @@
         End If
     End Function
 
-    Function ProgramProvider(ByVal VPCProgram As Integer) As Integer
+    Function ProgramProvider(ByVal VPCProgram As Integer)
         If VPCProgram = "102" Then
             Return "Monarch 2"
         ElseIf VPCProgram = "104" Then
@@ -18,7 +20,7 @@
         End If
     End Function
 
-    Function AnnivMonth(ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date)) As Integer
+    Function AnnivMonth(ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date))
         If Not IsNothing(premiumadvancedate) Then
             Return Month(premiumadvancedate)
         Else
@@ -26,7 +28,7 @@
         End If
     End Function
 
-    Function AnnualStmtDate(ByVal annualstatementdate As Nullable(Of Date)) As Nullable(Of Date)
+    Function AnnualStmtDate(ByVal annualstatementdate As Nullable(Of Date))
         If Not IsNothing(annualstatementdate) Then
             Return FormatDateTime(annualstatementdate, 2)
         Else
@@ -34,7 +36,7 @@
         End If
     End Function
 
-    Function ThirdPartyAuth(ByVal third_party_auth As String, ByVal doesnotacceptthirdpa As String, ByVal restrictedauth As String) As String
+    Function ThirdPartyAuth(ByVal third_party_auth As String, ByVal doesnotacceptthirdpa As String, ByVal restrictedauth As String)
         Dim res
 
         If third_party_auth = "T" Then
@@ -52,7 +54,7 @@
         Return res
     End Function
 
-    Function RunningOff(ByVal cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String) As String
+    Function RunningOff(ByVal cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String)
         Dim str
         str = ""
 
@@ -68,23 +70,32 @@
         Return str
     End Function
 
-    Function Month1(ByVal date_addl_prem_due As Nullable(Of Date), ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date), cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String, ByVal calc_method As String, ByVal last_coi As Decimal, ByVal ga_charge As Decimal) As String
+    'You will need to set the monthNumber parameter according to the report column that you're trying to show (ex: for the Month11 column, you need to set the value as "11")
+    Function Month_func(ByVal date_addl_prem_due As Nullable(Of Date), ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date), cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String, ByVal calc_method As String, ByVal last_coi As Decimal, ByVal ga_charge As Decimal, ByVal NextEstPrmExpense As Decimal, ByVal NextPremExpense As Decimal, ByVal monthNum As Integer)
         Dim monthNumber
-        monthNumber = 1
+        monthNumber = monthNum
         Dim CurrentDate As Date
         CurrentDate = Today()
 
+        'Month 13 is special:
+        If monthNum = 13 Then
+            If Month(CurrentDate) = AnnivMonth(premiumadvancedate, aniversarydate) Then '-- if month 13 is same as anniv month (month 13 = month 1 = now)
+                Return 1.1 * Month_func(date_addl_prem_due, premiumadvancedate, aniversarydate, cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, calc_method, last_coi, ga_charge, NextEstPrmExpense, NextPremExpense, 12) 'uses always month 12 to calculate
+            End If
+        End If
+
+        'Then you use this for all the months from 1 to 13:
         If DateDiff("m", DateAdd("m", monthNumber - 1, CurrentDate), date_addl_prem_due) <= 0 Then '-- on or after due date
-            If DateDiff("m", DateAdd("m", monthNumber - 1, CurrentDate), NextAnnivDate(premiumadvancedate, aniversarydate) <= 0 Then '-- on or after next anniv. date
-                Return PremAfterAnniv(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, calc_method, last_coi, ga_charge)
+            If DateDiff("m", DateAdd("m", monthNumber - 1, CurrentDate), NextAnnivDate(premiumadvancedate, aniversarydate)) <= 0 Then '-- on or after next anniv. date
+                Return PremAfterAnniv(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, calc_method, last_coi, ga_charge, NextEstPrmExpense, NextPremExpense)
             Else
-                Return {@PremBeforeAnniv}
+                Return PremBeforeAnniv(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, calc_method, last_coi, ga_charge, NextEstPrmExpense, NextPremExpense)
             End If
         End If
     End Function
 
-    Function NextAnnivDate(ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date)) As Nullable(Of Date)
-        Dim annivDate, i
+    Function NextAnnivDate(ByVal premiumadvancedate As Nullable(Of Date), ByVal aniversarydate As Nullable(Of Date))
+        Dim annivDate
         Dim CurrentDate As Date
         CurrentDate = Today()
 
@@ -101,15 +112,15 @@
         Return annivDate
     End Function
 
-    Function PremAfterAnniv(cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String, ByVal calc_method As String, ByVal last_coi As Decimal, ByVal ga_charge As Decimal) As String
+    Function PremAfterAnniv(cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String, ByVal calc_method As String, ByVal last_coi As Decimal, ByVal ga_charge As Decimal, ByVal NextEstPrmExpense As Decimal, ByVal NextPremExpense As Decimal)
         If InStr(RunningOff(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated), "Monthly GA") > 0 Or calc_method = "Shadow Calculation (Special)" Then
             Return LastCOI(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, last_coi, ga_charge)
         Else
-            Return (LastCOI(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, last_coi, ga_charge) * 1.1) / (1 - {@NextYearPremExp})
+            Return (LastCOI(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, last_coi, ga_charge) * 1.1) / (1 - NextYearPremExp(NextEstPrmExpense, NextPremExpense))
         End If
     End Function
 
-    Function LastCOI(cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String, ByVal last_coi As Decimal, ByVal ga_charge As Decimal) As String
+    Function LastCOI(cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String, ByVal last_coi As Decimal, ByVal ga_charge As Decimal)
         If InStr(RunningOff(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated), "CV") > 0 Or InStr(RunningOff(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated), "CSV") > 0 Then
             Return last_coi
         ElseIf InStr(RunningOff(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated), "GA") > 0 Or InStr(RunningOff(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated), "Shadow") > 0 Then
@@ -119,15 +130,15 @@
         End If
     End Function
 
-    Function PremBeforeAnniv(cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String, ByVal calc_method As Decimal, ByVal last_coi As Decimal, ByVal ga_charge As Decimal, ByVal NextEstPrmExpense As Decimal, ByVal NextPremExpense As Decimal) As String
+    Function PremBeforeAnniv(cv As String, ByVal csv As String, ByVal monthly_ga As String, ByVal annual_ga As String, ByVal shaow_acct As String, ByVal coi_estimated As String, ByVal calc_method As Decimal, ByVal last_coi As Decimal, ByVal ga_charge As Decimal, ByVal NextEstPrmExpense As Decimal, ByVal NextPremExpense As Decimal)
         If InStr(RunningOff(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated), "Monthly GA") > 0 Or calc_method = "Shadow Calculation (Special)" Then
             Return LastCOI(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, last_coi, ga_charge)
         Else
-            Return (LastCOI(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, last_coi, ga_charge) * 1.1) / (1 - NextYearPremExp(, NextEstPrmExpense, NextPremExpense)
+            Return (LastCOI(cv, csv, monthly_ga, annual_ga, shaow_acct, coi_estimated, last_coi, ga_charge) * 1.1) / (1 - NextYearPremExp(NextEstPrmExpense, NextPremExpense))
         End If
     End Function
 
-    Function NextYearPremExp(ByVal NextEstPrmExpense As Decimal, ByVal NextPremExpense As Decimal) As Decimal
+    Function NextYearPremExp(ByVal NextEstPrmExpense As Decimal, ByVal NextPremExpense As Decimal)
         If Not IsNothing(NextEstPrmExpense) Then
             Return NextEstPrmExpense
         Else
@@ -135,11 +146,25 @@
         End If
     End Function
 
+    'This function is just to VBScript, you should probably use Month in the main formula
+    Function Month(ByVal currentDate As Date)
+        Return Convert.ToDateTime(currentDate).Month
+    End Function
 
+    Function AdjReqPremium(ByVal override_premium As Decimal, ByVal adj_est_prem As Decimal)
+        If Not IsNothing(override_premium) Then
+            Return override_premium
+        Else
+            Return adj_est_prem
+        End If
+    End Function
 
-
-
-
-
+    Function OverridePremium(ByVal override_premium As Decimal)
+        If Not IsNothing(override_premium) Then
+            Return "Y"
+        Else
+            Return "N"
+        End If
+    End Function
 
 End Class
