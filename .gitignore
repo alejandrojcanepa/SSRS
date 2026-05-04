@@ -1,7 +1,38 @@
+# Visual Studio / SSRS local files
 *.suo
 *.user
 _ReSharper.*
-bin
-obj
-packages
-.vs
+.vs/
+bin/
+obj/
+packages/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+keys/
+
+# Logs and caches
+*.log
+.cache/
+tmp/
+temp/
+
+# Local artifacts
+artifacts/
+outputs/
+runtime/
+status/
